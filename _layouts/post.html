@@ -1,0 +1,72 @@
+---
+layout: default
+---
+
+<div id="postpath">
+    <a title="Go to homepage" href="http://www.neoease.com/">Home</a>
+    &gt; <a href="/category/{{ page.categories | array_to_sentence_string }}/" title="" rel="category tag">{{ page.categories | array_to_sentence_string | capitalize }}</a>      &gt; {{ page.title }} 
+</div>
+
+<!-- post START -->
+<div class="post" id="">
+    <h1>{{ post.title }}</h1>
+    <div class="info">
+        <span class="date">{{ page.date | date:'%B %d, %Y' }}</span>
+        <span class="addcomment"><a href="#respond">Leave a comment</a></span>
+        <span class="comments"><a href="#comments">Go to comments</a></span>
+        <div class="fixed"></div>
+    </div>
+    <div class="content">
+        {{ content }}
+        <div class="fixed"></div>
+    </div>
+        <div class="under">
+            <span id="translate_button_post-233" class="translate"><a href="javascript:void(0);" onclick="show_translate_popup('en', 'post', 233);">Translate</a></span>
+            <span class="categories"><a href="http://www.neoease.com/category/wordpress/" title="View all posts in WordPress" rel="category tag">WordPress</a></span>
+            <span class="tags"><a href="http://www.neoease.com/tag/theme/" rel="tag">Theme</a>, <a href="http://www.neoease.com/tag/wordpress/" rel="tag">WordPress</a></span>
+        </div>
+        <div class="messagebox announce">
+            <strong>声明:</strong> 本站遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">署名-非商业性使用-相同方式共享 3.0</a> 共享协议. 转载请注明转自 <a href="{{ site.url }}">{{ site.author.name }}</a>
+        </div>
+    </div>
+<!-- post END -->
+
+<!-- related posts START -->
+<div id="related_posts">
+<h3>Related Posts</h3>
+    <ul class="related_post">
+    {% for post in site.related_posts limit:5 %}
+    <li>
+    <a href="{{ post.url }}" title="{{ post.title | xml_escape }}">{{ post.title }}</a> <span class="count">(TODO)</span> <small class="excerpt">{{ post.content | truncate:120 }}</small>
+    </li>
+    {% endfor %}
+    </ul>
+</div>
+<div class="fixed"></div>
+<!-- related posts END -->
+
+<div id="comments">
+	<div id="disqus_thread"></div>
+
+	<script type="text/javascript">
+		var disqus_developer = (/localhost|github|dev/i).test(location.host);
+	</script>
+
+	<script type="text/javascript" src="http://disqus.com/forums/{{ site.disqus.id }}/embed.js"></script>
+
+	<noscript>
+		<a href="http://{{ site.disqus.id }}.disqus.com/?url=ref">View the discussion thread.</a>
+	</noscript>
+</div>
+
+<div id="postnavi">
+    {% if page.previous %}
+    <span class="prev"><a href="{{ page.previous.url }}">{{ page.previous.title | truncatewords:5 }}</a></span>
+    {% endif %}
+
+    {% if page.next %}
+    <span class="next"><a href="{{ page.next.url }}">{{ page.next.title | truncatewords:5 }}</a></span>
+    {% endif %}
+    <div class="fixed"></div>
+</div>
+
