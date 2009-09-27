@@ -3,17 +3,17 @@ layout: default
 ---
 
 <div id="postpath">
-    <a title="Go to homepage" href="http://www.neoease.com/">Home</a>
+    <a title="Go to homepage" href="{{ site.url }}">Home</a>
     &gt; <a href="/category/{{ page.categories | array_to_sentence_string }}/" title="" rel="category tag">{{ page.categories | array_to_sentence_string | capitalize }}</a>      &gt; {{ page.title }} 
 </div>
 
 <!-- post START -->
-<div class="post" id="">
-    <h1>{{ post.title }}</h1>
+<div class="post" id="post-{{ page.id | replace:'/','-' }}">
+    <h1>{{ page.title }}</h1>
     <div class="info">
         <span class="date">{{ page.date | date:'%B %d, %Y' }}</span>
-        <span class="addcomment"><a href="#respond">Leave a comment</a></span>
-        <span class="comments"><a href="#comments">Go to comments</a></span>
+        <span class="addcomment"><a href="#dsq-new-post">Leave a comment</a></span>
+        <span class="comments"><a href="#dsq-comments">Go to comments</a></span>
         <div class="fixed"></div>
     </div>
     <div class="content">
@@ -21,7 +21,7 @@ layout: default
         <div class="fixed"></div>
     </div>
         <div class="under">
-            <span id="translate_button_post-233" class="translate"><a href="javascript:void(0);" onclick="show_translate_popup('en', 'post', 233);">Translate</a></span>
+            <span id="translate_button_post-{{ page.id | replace:'/','-' }}" class="translate"><a href="javascript:void(0);" onclick="show_translate_popup('en', 'post', '{{ page.id | replace:'/','-' }}');">Translate</a></span>
             <span class="categories"><a href="http://www.neoease.com/category/wordpress/" title="View all posts in WordPress" rel="category tag">WordPress</a></span>
             <span class="tags"><a href="http://www.neoease.com/tag/theme/" rel="tag">Theme</a>, <a href="http://www.neoease.com/tag/wordpress/" rel="tag">WordPress</a></span>
         </div>
@@ -45,19 +45,20 @@ layout: default
 <div class="fixed"></div>
 <!-- related posts END -->
 
-<div id="comments">
-	<div id="disqus_thread"></div>
+<!-- comments START -->
+<script type="text/javascript">
+    var disqus_developer = (/localhost|github|dev/i).test(location.host);
+    var disqus_title = "{{ page.title }}";
+    var disqus_container_id = "comments";
+</script>
 
-	<script type="text/javascript">
-		var disqus_developer = (/localhost|github|dev/i).test(location.host);
-	</script>
+<div id="comments"></div>
+<script type="text/javascript" src="http://disqus.com/forums/{{ site.disqus.id }}/embed.js"></script>
 
-	<script type="text/javascript" src="http://disqus.com/forums/{{ site.disqus.id }}/embed.js"></script>
-
-	<noscript>
-		<a href="http://{{ site.disqus.id }}.disqus.com/?url=ref">View the discussion thread.</a>
-	</noscript>
-</div>
+<noscript>
+    <a href="http://{{ site.disqus.id }}.disqus.com/?url=ref">View the discussion thread.</a>
+</noscript>
+<!-- comments END -->
 
 <div id="postnavi">
     {% if page.previous %}

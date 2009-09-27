@@ -17,7 +17,7 @@
 					<li id="inezha_reader"><a rel="external nofollow" class="reader" title="Subscribe with 哪吒网" href="http://inezha.com/add?url={{ site.url }}{{ site.feed }}"><span>哪吒网</span></a></li>
 				</ul>
 			</div>
-            <a rel="external nofollow" id="feedemail" title="Subscribe to this blog via email..." href="http://www.feedsky.com/msub_wr.html?burl={{ site.author.feedsky }}">Email feed</a>
+            <a rel="external nofollow" id="feedemail" title="Subscribe to this blog via email..." href="http://www.feedsky.com/msub_wr.html?burl={{ site.feedsky.id }}">Email feed</a>
                             <a rel="external nofollow" id="followme" title="Follow me!" href="https://twitter.com/{{ site.author.twitter }}/">Twitter</a>
 			<div class="fixed"></div>
 		</div>
@@ -39,7 +39,9 @@
             </ul>
         </div>
         {% endif %}
-    </ul>"
+    </ul>
+    <!-- comments -->
+    <div class="widget"><h3>Recent Comments</h2><script type="text/javascript" src="http://disqus.com/forums/azuwis/recent_comments_widget.js?num_items=5&hide_avatars=0&avatar_size=32&excerpt_length=200"></script></div>
 	<!-- tag cloud -->
 	<div id="tag_cloud" class="widget">
         <h3>Tag Cloud</h3>
@@ -50,8 +52,8 @@
 	<div class="widget widget_categories">
 		<h3>Categories</h3>
 		<ul>
-        {% for category in site.categories %}
-        <li class=""><a href="/category/{{ category.categories }}/" title="View all posts filed under {{ category | capitalize }}">{{ category | capitalize }}</a></li>
+        {% for category in page.categories %}
+        <li class=""><a href="/category/{{ category }}/" title="View all posts filed under {{ category | capitalize }}">{{ category | capitalize }}</a></li>
         {% endfor %}
 		</ul>
 		<div class="fixed"></div>

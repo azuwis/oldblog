@@ -6,7 +6,7 @@ paginate:       5
 exclude:
     - README.md
 
-title:          AzuWis' Blog
+title:          AzuWis Blog
 url:            http://azuwis.github.com
 feed:           /atom.xml
 description:    "Advanced JavaScript techniques, tips on avoiding those nasty CSS bugs, and musings on technological progress."
@@ -18,7 +18,6 @@ author:
     name:       AzuWis
     email:      azuwis@gmail.com
     twitter:    azuwis
-    feedsky:    azuwis
     
 about: >
     Hi, I'm Scott Kyle, a JavaScript and Apple enthusiast.
@@ -29,6 +28,12 @@ about: >
     
 disqus:
     id:         azuwis
+
+feedsky:
+    id:         azuwis
+
+google:
+    analytics:   UA-10843565-1
 
 nav:
     - name:     Blog
