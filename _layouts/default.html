@@ -68,11 +68,11 @@
 
 	<!-- searchbox START -->
 	<div id="searchbox">
-					<form action=" http://www.neoease.com/cse" id="cse-search-box">
+					<form action=" {{ site.url }}/cse" id="cse-search-box">
 				<div class="content">
 					<input id="searchtxt" type="text" class="textfield" name="q" size="24" />
 					<input id="searchbtn" type="submit" class="button" name="sa" value="" />
-					<input type="hidden" name="cx" value="014782006753236413342:1ltfrybsbz4" />
+					<input type="hidden" name="cx" value="{{ site.google.cse-cx }}" />
 					<input type="hidden" name="cof" value="FORID:11" />
 					<input type="hidden" name="ie" value="UTF-8" />
 				</div>
@@ -213,14 +213,32 @@
 	<script src="http://letskillie6.googlecode.com/svn/trunk/letskillie6.bilingual.pack.js"></script>
 <![endif]-->
 
+{% if site.google.analytics %}
 <script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    //<![CDATA[
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
 </script>
 <script type="text/javascript">
-var pageTracker = _gat._getTracker("{{ site.google.analytics }}");
-pageTracker._trackPageview();
+    var pageTracker = _gat._getTracker("{{ site.google.analytics }}");
+    pageTracker._trackPageview();
+    //]]>
 </script>
+{% endif %}
 
+<script type="text/javascript">
+    //<![CDATA[
+    (function() {
+        var links = document.getElementsByTagName('a');
+        var query = '?';
+        for(var i = 0; i < links.length; i++) {
+            if(links[i].href.indexOf('#disqus_thread') >= 0) {
+                query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+            }
+        }
+        document.write('<script type="text/javascript" src="http://disqus.com/forums/{{ site.disqus.id }}/get_num_replies.js' + query + '"></' + 'script>');
+        })();
+    //]]>
+</script>
 </body>
 </html>

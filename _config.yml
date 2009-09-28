@@ -33,7 +33,8 @@ feedsky:
     id:         azuwis
 
 google:
-    analytics:   UA-10843565-1
+    cse-cx:       009024607379464921389:urevm5phfaq
+#    analytics:   UA-10843565-1
 
 nav:
     - name:     Blog
