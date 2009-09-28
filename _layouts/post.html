@@ -37,7 +37,7 @@ layout: default
     <ul class="related_post">
     {% for post in site.related_posts limit:5 %}
     <li>
-    <a href="{{ post.url }}" title="{{ post.title | xml_escape }}">{{ post.title }}</a> <span class="count">(TODO)</span> <small class="excerpt">{{ post.content | truncate:120 }}</small>
+    <a href="{{ post.url }}" title="{{ post.title | xml_escape }}">{{ post.title }}</a> <span class="count">(<a href="{{ post.url }}#disqus_thread">View Comments</a>)</span> <small class="excerpt">{{ post.content | truncate:90 }}</small>
     </li>
     {% endfor %}
     </ul>
@@ -45,20 +45,19 @@ layout: default
 <div class="fixed"></div>
 <!-- related posts END -->
 
-<!-- comments START -->
+<!-- recent comments START -->
+<div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_developer = (/localhost|github|dev/i).test(location.host);
     var disqus_title = "{{ page.title }}";
-    var disqus_container_id = "comments";
 </script>
 
-<div id="comments"></div>
 <script type="text/javascript" src="http://disqus.com/forums/{{ site.disqus.id }}/embed.js"></script>
 
 <noscript>
     <a href="http://{{ site.disqus.id }}.disqus.com/?url=ref">View the discussion thread.</a>
 </noscript>
-<!-- comments END -->
+<!-- recent comments END -->
 
 <div id="postnavi">
     {% if page.previous %}
