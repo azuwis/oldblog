@@ -3,8 +3,9 @@ layout: default
 ---
 
 <div id="postpath">
-    <a title="Go to homepage" href="{{ site.url }}">Home</a>
-    &gt; <a href="/category/{{ page.categories | array_to_sentence_string }}/" title="" rel="category tag">{{ page.categories | array_to_sentence_string | capitalize }}</a>      &gt; {{ page.title }} 
+    <a title="Go to homepage" href="{{ site.url }}">Home</a> &gt;
+    <!-- <a href="/category/{{ page.categories | array_to_sentence_string }}/" title="" rel="category tag">{{ page.categories | array_to_sentence_string | capitalize }}</a> &gt; -->
+    {{ page.title }} 
 </div>
 
 <!-- post START -->
@@ -22,8 +23,12 @@ layout: default
     </div>
         <div class="under">
             <span id="translate_button_post-{{ page.id | replace:'/','-' }}" class="translate"><a href="javascript:void(0);" onclick="show_translate_popup('en', 'post', '{{ page.id | replace:'/','-' }}');">Translate</a></span>
-            <span class="categories"><a href="http://www.neoease.com/category/wordpress/" title="View all posts in WordPress" rel="category tag">WordPress</a></span>
-            <span class="tags"><a href="http://www.neoease.com/tag/theme/" rel="tag">Theme</a>, <a href="http://www.neoease.com/tag/wordpress/" rel="tag">WordPress</a></span>
+            <!-- <span class="categories"><a href="/category/wordpress/" title="View all posts in WordPress" rel="category tag">WordPress</a></span> -->
+            <span class="tags">
+                {% for tag in page.tags %}
+                <a href="http://azuwis.github.com/cse/?q={{ tag }}&sa=&cx={{ site.google.cse-cx }}&cof=FORID%3A11&ie=UTF-8" rel="tag">{{ tag | capitalize }}</a>{% unless forloop.last %},{% endunless %}
+                {% endfor %}
+            </span>
         </div>
         <div class="messagebox announce">
             <strong>声明:</strong> 本站遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">署名-非商业性使用-相同方式共享 3.0</a> 共享协议. 转载请注明转自 <a href="{{ site.url }}">{{ site.author.name }}</a>
@@ -37,7 +42,8 @@ layout: default
     <ul class="related_post">
     {% for post in site.related_posts limit:5 %}
     <li>
-    <a href="{{ post.url }}" title="{{ post.title | xml_escape }}">{{ post.title }}</a> <span class="count">(<a href="{{ post.url }}#disqus_thread">View Comments</a>)</span> <small class="excerpt">{{ post.content | truncate:90 }}</small>
+    {{ post.date | date:'%Y/%m/%d' }} <a href="{{ post.url }}" title="{{ post.title | xml_escape }}">{{ post.title }}</a> <span class="count">(<a href="{{ post.url }}#disqus_thread">View Comments</a>)</span>
+    <!-- <small class="excerpt">{{ post.content | truncate:90 }}</small> -->
     </li>
     {% endfor %}
     </ul>
