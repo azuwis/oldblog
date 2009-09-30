@@ -1,6 +1,5 @@
 pygments:       true
-#permalink:      /:categories/:title/
-permalink:      pretty
+permalink:      /:year/:month/:day/:title.html
 paginate:       5
 
 exclude:
