@@ -3,13 +3,14 @@ layout: default
 ---
 
 <div id="postpath">
-    <a title="Go to homepage" href="{{ site.url }}">Home</a> &gt;
+    <a title="Go to homepage" href="/">Home</a> &gt;
     <!-- <a href="/category/{{ page.categories | array_to_sentence_string }}/" title="" rel="category tag">{{ page.categories | array_to_sentence_string | capitalize }}</a> &gt; -->
     {{ page.title }} 
 </div>
 
 <!-- post START -->
-<div class="post" id="post-{{ page.id | replace:'/','-' }}">
+{% capture post_id %}{{ page.id }}{% endcapture %}
+<div class="post" id="post-{{ post_id }}">
     <h1>{{ page.title }}</h1>
     <div class="info">
         <span class="date">{{ page.date | date:'%B %d, %Y' }}</span>
@@ -22,7 +23,7 @@ layout: default
         <div class="fixed"></div>
     </div>
         <div class="under">
-            <span id="translate_button_post-{{ page.id | replace:'/','-' }}" class="translate"><a href="javascript:void(0);" onclick="show_translate_popup('en', 'post', '{{ page.id | replace:'/','-' }}');">Translate</a></span>
+            <span id="translate_button_post-{{ post_id }}" class="translate"><a href="javascript:void(0);" onclick="show_translate_popup('en', 'post', '{{ post_id }}');">Translate</a></span>
             <!-- <span class="categories"><a href="/category/wordpress/" title="View all posts in WordPress" rel="category tag">WordPress</a></span> -->
             <span class="tags">
                 {% for tag in page.tags %}
