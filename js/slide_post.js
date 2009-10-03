@@ -34,7 +34,7 @@
         jQuery.ajax({
             type: 'GET',
             url: postId + '.html',
-            cache: false,
+            //cache: false,
             dataType: 'html',
             contentType: 'application/json; charset=utf-8',
             beforeSend: function (data) {
