@@ -11,19 +11,12 @@ feed:           /atom.xml
 description:    "Advanced JavaScript techniques, tips on avoiding those nasty CSS bugs, and musings on technological progress."
 comment:        Blogging Like a Hacker
 
-keywords:       WordPress, Theme, Plugins, Tricks, Tutorials, 主题, 插件, 技巧, 教程, Customization, 定制主题, Google, Blog, Blogger, 博客, Web Design, SEO, Web 2.0
+keywords:       Linux, GIT, Tricks, Tutorials, Google, Blog, 博客
 
 author:
     name:       AzuWis
     email:      azuwis@gmail.com
     twitter:    azuwis
-    
-about: >
-    Hi, I'm Scott Kyle, a JavaScript and Apple enthusiast.
-    I recently became an offical developer for <a href="http://mootools.net">MooTools</a>.
-    You can follow me on <a href="http://twitter.com/appden">Twitter</a>, fork me
-    <a href="http://github.com/appden">GitHub</a>, and check out some of my recent work
-    on my <a href="/portfolio/">portfolio</a>.
     
 disqus:
     id:         azuwis
@@ -40,39 +33,8 @@ nav:
       url:      /
       
     - name:     Apps
-      subnav:
-        - name: Coming Soon
     
     - name:     Projects
-      subnav:
-        - name: Coming Soon
         
     - name:     About
-      url:      /about/
-      subnav:
-        - name: Portfolio
-          url:  /portfolio/
-          
-        - name: Contact
-          url:  mailto:scott-at-dotcom-after-appden
-    
-
-footer:
-    - verb:     Thinking
-      action:   "YAML &gt; JSON"
-
-    - verb:     Listening
-      action:   Pandora of course
-      
-copyright:
-    - Design by <a href="http://ipsleung.com">Iris Leung</a>
-    - "&copy; Copyright 2009, AppDen. All Rights Reserved."
-      
-css:
-    - /lib/appden.css
-    - /lib/syntax.css
-    
-js:
-    - http://ajax.googleapis.com/ajax/libs/mootools/1.2.3/mootools-yui-compressed.js
-    - /lib/mootools-more.js
-    - /lib/appden.js
+      url:      /about.html
