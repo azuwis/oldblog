@@ -8,7 +8,7 @@ exclude:
 title:          AzuWis Blog
 url:            http://azuwis.github.com
 feed:           /atom.xml
-description:    "Advanced JavaScript techniques, tips on avoiding those nasty CSS bugs, and musings on technological progress."
+description:    ""
 comment:        Blogging Like a Hacker
 
 keywords:       Linux, GIT, Tricks, Tutorials, Google, Blog, 博客
