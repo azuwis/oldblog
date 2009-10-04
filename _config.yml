@@ -8,10 +8,10 @@ exclude:
 title:          AzuWis Blog
 url:            http://azuwis.github.com
 feed:           /atom.xml
-description:    ""
+description:    "A Blog About Linux, GIT, Tips, Tutorials and More."
 comment:        Blogging Like a Hacker
 
-keywords:       Linux, GIT, Tricks, Tutorials, Google, Blog, 博客
+keywords:       Linux, GIT, Tips, Tutorials, Google, Blog, 博客
 
 author:
     name:       AzuWis
