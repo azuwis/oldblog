@@ -8,10 +8,10 @@ exclude:
 title:          AzuWis Blog
 url:            http://azuwis.github.com
 feed:           /atom.xml
-description:    "A Blog About Linux, GIT, Tips, Tutorials and More."
+description:    "A Blog About Linux, Debian, GIT, Tips, Tutorials and More."
 comment:        Blogging Like a Hacker
 
-keywords:       Linux, GIT, Tips, Tutorials, Google, Blog, 博客
+keywords:       Linux, Debian, GIT, Tips, Tutorials, Google, Blog, 博客
 
 author:
     name:       AzuWis
@@ -25,7 +25,7 @@ feedsky:
     id:         azuwis
 
 google:
-    cse-cx:       009024607379464921389:urevm5phfaq
+    cse-cx:      009024607379464921389:urevm5phfaq
     analytics:   UA-10843565-1
 
 nav:
