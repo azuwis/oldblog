@@ -9,7 +9,7 @@ layout: default
 </div>
 
 <!-- post START -->
-{% capture post_id %}{{ page.id }}{% endcapture %}
+{% capture post_id %}{{ page.id | replace:'/','__' }}{% endcapture %}
 <div class="post" id="post-{{ post_id }}">
     <h1>{{ page.title }}</h1>
     <div class="info">

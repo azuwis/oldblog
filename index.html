@@ -5,7 +5,7 @@ title:  Homepage
 
 
 {% for page in paginator.posts %}
-{% capture post_id %}{{ page.id }}{% endcapture %}
+{% capture post_id %}{{ page.id | replace:'/','__' }}{% endcapture %}
 <div class="post" id="post-{{ post_id }}">
     <h1><a class="title" href="{{ page.url }}" rel="bookmark">{{ page.title }}</a></h1>
     <div class="info">
