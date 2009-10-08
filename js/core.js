@@ -4,7 +4,7 @@
         jQuery.ajax({
             url: "/inc/translate.html",
             success: function (html) {
-                jQuery('body > *:last').after(html);
+                jQuery('body').append(html);
             }
         });
     });
