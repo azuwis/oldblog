@@ -8,6 +8,7 @@ import math
 import os
 import urllib
 import sys
+import re
 
 
 def find_tags(postfile):
@@ -48,6 +49,19 @@ if __name__ == '__main__':
 	    else:
 		counts[t] = 1
 
+    # get cse-url and cse-cx from _config.yml
+    f_conf = open('_config.yml')
+    cse_p = re.compile('cse-(\w+):\s+(\S+)')
+    cse_url = ''
+    cse_cx = ''
+    for l in f_conf.xreadlines():
+        m = cse_p.search(l)
+        if m:
+            if m.group(1) == 'cx':
+                cse_cx = m.group(2)
+            elif m.group(1) == 'url':
+                cse_url = m.group(2)
+
     # grab the top N tags
     sorted_keys = sorted(counts.keys(), 
 			 lambda x,y: cmp(counts[x], counts[y]),
@@ -69,6 +83,6 @@ if __name__ == '__main__':
     for t in sorted(sorted_keys[:cloud_size]):
         rank = max_ranks - int(math.log(counts[t] - min_count + 1) * factor)
         fontsize = 8.0 + rank * 8.0 / max_ranks
-        print "<a href='http://azuwis.github.com/cse/?q=%s&sa=&cx=009024607379464921389%%3Aurevm5phfaq&cof=FORID%%3A11&ie=UTF-8' class='' title='%d topics' rel='tag' style='font-size: %fpt;'>%s</a>" % \
-	    (urllib.quote_plus(t), counts[t], fontsize, t)
+        print "<a href='%s?q=%s&cx=%s&cof=FORID%%3A11&ie=UTF-8' class='' title='%d topics' rel='tag' style='font-size: %fpt;'>%s</a>" % \
+	    (cse_url, urllib.quote_plus(t), urllib.quote_plus(cse_cx), counts[t], fontsize, t)
     #<a href='http://www.neoease.com/tag/release/' class='tag-link-13' title='41 topics' rel="tag" style='font-size: 11.102040816327pt;'>Release</a>
