@@ -18,7 +18,7 @@ title:  Homepage
         <span id="translate_button_post-{{ post_id }}" class="translate"><a href="javascript:void(0);" onclick="show_translate_popup('en', 'post', '{{ post_id }}');">Translate</a></span>
         <span class="tags">
             {% for tag in page.tags %}
-            <a href="http://azuwis.github.com/cse/?q={{ tag }}&sa=&cx={{ site.google.cse-cx }}&cof=FORID%3A11&ie=UTF-8" rel="tag">{{ tag | capitalize }}</a>{% unless forloop.last %},{% endunless %}
+	    <a href="{{ site.google.cse-url }}?q={{ tag }}&cx={{ site.google.cse-cx }}&cof=FORID%3A11&ie=UTF-8" rel="tag">{{ tag | capitalize }}</a>{% unless forloop.last %},{% endunless %}
             {% endfor %}
         </span>
     </div>
