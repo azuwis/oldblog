@@ -5,6 +5,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <meta name="keywords" content="{% if page.title == 'Homepage' and site.keywords %}{{ site.keywords }}{% elsif page.tags %}{{ page.tags | array_to_sentence_string | capitalize }}{% endif %}" />
+    {% if page.title == 'Homepage' %}<meta name="google-site-verification" content="{{ site.google.site-verification }}" />{% endif %}
     <meta name="generator" content="Jekyll" />
     <meta name="author" content="{{ site.author.name }}" />
     <meta name="description" content="{{ site.description }}" />

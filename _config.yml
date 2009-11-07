@@ -4,9 +4,10 @@ paginate:       10
 
 exclude:
     - README.md
+    - app.yaml
 
 title:          AzuWis Blog
-url:            http://azuwis.github.com
+url:            http://vi.appspot.com
 feed:           /atom.xml
 description:    "A Blog About Linux, Debian, GIT, Tips, Tutorials and More."
 comment:        Blogging Like a Hacker
@@ -25,8 +26,9 @@ feedsky:
     id:         azuwis
 
 google:
-    cse-cx:      009024607379464921389:urevm5phfaq
+    cse-cx:      009024607379464921389:3-je6z-lleq
     cse-url:     /cse.html
+    site-verification: 7ocoXMYwXwwrLbmmseiE9MB7sT9ZY4P032kyioSS7OE
     analytics:   UA-10843565-1
 
 nav:
