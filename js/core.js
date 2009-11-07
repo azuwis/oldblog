@@ -73,6 +73,7 @@
 })();
 
 var gcse = function(text){
+    jQuery("form#cse-search-box input#searchtxt").val(text);
     var url = "http://ajax.googleapis.com/ajax/services/search/web?v=1.0&callback=?&rsz=large&cx=009024607379464921389:3-je6z-lleq&q=";
     url += encodeURIComponent(text);
     var main = jQuery("div#main");
