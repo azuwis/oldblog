@@ -72,8 +72,40 @@
     }
 })();
 
+var gcse = function(text){
+    var url = "http://ajax.googleapis.com/ajax/services/search/web?v=1.0&callback=?&rsz=large&cx=009024607379464921389:3-je6z-lleq&q=";
+    url += encodeURIComponent(text);
+    var main = jQuery("div#main");
+    main.html("Searching on Google Custom Search...");
+    jQuery.getJSON(url, function (data) {
+        if (data.responseData.results && data.responseData.results.length > 0) {
+            main.html("");
+            jQuery.each(data.responseData.results, function(i,item){
+                var title = item.titleNoFormatting.replace("| AzuWis Blog", "");
+                main.append(jQuery('<div class="post">').html(
+                    jQuery('<h1>').html(
+                        jQuery('<a class="title">').attr('href', item.url).text(title)
+                    )
+                ).append(
+                        jQuery('<div class="content">').html(item.content)
+                ));
+            });
+        } else {
+            main.append(" found nothing.");
+        }
+    });
+};
+
+jQuery(document).ready(function () {
+    var searchbox = jQuery("form#cse-search-box");
+    searchbox.submit(function(){
+        gcse(searchbox.find("input#searchtxt").val());
+        return false;
+    });
+});
+
 // disqus api
-(function () {
+jQuery(document).ready(function () {
     jQuery.jsonp({
         cache: true,
         url: "http://azuwis-comments.appspot.com/?limit=8&exclude=spam,killed",
@@ -112,7 +144,7 @@
             jQuery('div#recent_comments.widget').append(comment);
         }
     });
-})();
+});
 
 // extract from base.js of inove theme
 jQuery.fn.cumulativeOffset = function (e) {
