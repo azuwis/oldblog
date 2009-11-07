@@ -41,7 +41,7 @@
                 loadPostContent(id, '<p class="ajax-loader">Loading...</p>')
             },
             success: function (data) {
-                data = jQuery(data).find('div.post div.content');
+		data = jQuery(data).find('div.post div.content').html();
                 loadPostContent(id, data)
             },
             error: function (data) {
