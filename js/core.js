@@ -77,7 +77,7 @@ var gcse = function(text){
     var url = "http://ajax.googleapis.com/ajax/services/search/web?v=1.0&callback=?&rsz=large&cx=009024607379464921389:3-je6z-lleq&q=";
     url += encodeURIComponent(text);
     var main = jQuery("div#main");
-    main.html("Searching on Google Custom Search...");
+    main.html('<p class="ajax-loader">Searching on Google Custom Search...</p>');
     jQuery.getJSON(url, function (data) {
         if (data.responseData.results && data.responseData.results.length > 0) {
             main.html("");
@@ -92,15 +92,18 @@ var gcse = function(text){
                 ));
             });
         } else {
-            main.append(" found nothing.");
+            main.find("p").removeClass("ajax-loader").append(" Found nothing.");
         }
     });
 };
 
 jQuery(document).ready(function () {
-    var searchbox = jQuery("form#cse-search-box");
-    searchbox.submit(function(){
-        gcse(searchbox.find("input#searchtxt").val());
+    jQuery("form#cse-search-box").submit(function(){
+        gcse(jQuery(this).find("input#searchtxt").val());
+        return false;
+    });
+    jQuery(".post .tags a").click(function(){
+        gcse(jQuery(this).text());
         return false;
     });
 });
