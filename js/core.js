@@ -80,17 +80,7 @@ var gcse = function(text){
     main.html('<p class="ajax-loader">Searching on Google Custom Search...</p>');
     jQuery.getJSON(url, function (data) {
         if (data.responseData.results && data.responseData.results.length > 0) {
-            main.html("");
-            jQuery.each(data.responseData.results, function(i,item){
-                var title = item.titleNoFormatting.replace("| AzuWis Blog", "");
-                main.append(jQuery('<div class="post">').html(
-                    jQuery('<h1>').html(
-                        jQuery('<a class="title">').attr('href', item.url).text(title)
-                    )
-                ).append(
-                        jQuery('<div class="content">').html(item.content)
-                ));
-            });
+            main.pureJSTemplate({id:"gcse", data:{r:data.responseData.results}});
         } else {
             main.find("p").removeClass("ajax-loader").append(" Found nothing.");
         }

@@ -69,6 +69,16 @@
 				</div>
 			</form>
 			</div>
+			<textarea id="gcse" style="display:none">
+				<#for(var i=0; i<data.r.length; i++) {
+				var title = data.r[i].titleNoFormatting.replace("| {{ site.title }}", "");
+				#>
+				<div class="post">
+					<h1><a class="title" href="<#=data.r[i].url#>"><#=title#></a></h1>
+					<div class="content"><#=data.r[i].content#></div>
+				</div>
+				<#}#>
+			</textarea>
 	<!-- searchbox END -->
 
 	<div class="fixed"></div>
@@ -122,6 +132,7 @@
 	hs.showCredits = false;
 </script>
 <script type="text/javascript" src="/js/jquery.scrollto.js"></script>
+<script type="text/javascript" src="/js/purejstemplate_jquery.js"></script>
 <script type="text/javascript" src="/js/jquery.jsonp-1.0.6.min.js"></script>
 <script type='text/javascript' src='/lib/google-ajax-translation/jquery.translate-1.3.9.min.js'></script>
 <script type="text/javascript" src="/js/core.js"></script>
