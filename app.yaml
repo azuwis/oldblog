@@ -4,15 +4,28 @@ runtime: python
 api_version: 1
 
 handlers:
-- url: (.*)/
-  static_files: _site\1/index.html
+- url: /
+  static_files: _site/index.html
   upload: _site/index.html
 
-- url: /
-  static_dir: _site
+- url: /(.*\.(html|xml))
+  static_files: _site/\1
+  upload: _site/.*
 
-#- url: /.*
-#  script: _scripts/main.py
+- url: /(.*\.js)
+  static_files: _site/\1
+  upload: _site/.*
+
+- url: /(.*\.css)
+  static_files: _site/\1
+  upload: _site/.*
+
+- url: /(.*\.(gif|png|jpg|cur|ico))
+  static_files: _site/\1
+  upload: _site/.*
+
+- url: /.*
+  script: _appengine/main.py
 
 skip_files:
-- ^(?!_site/).*$
+- ^(?!_(site|appengine)/).*$

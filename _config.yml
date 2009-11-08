@@ -5,6 +5,8 @@ paginate:       10
 exclude:
     - README.md
     - app.yaml
+    - Makefile
+    - index.yaml
 
 title:          AzuWis Blog
 url:            http://vi.appspot.com
