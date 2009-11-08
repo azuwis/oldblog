@@ -73,8 +73,12 @@
 })();
 
 var gcse = function(text){
+    if (typeof(google_cse_cx) == 'undefined') {
+        alert("google custom search id not set");
+        return;
+    }
     jQuery("form#cse-search-box input#searchtxt").val(text);
-    var url = "http://ajax.googleapis.com/ajax/services/search/web?v=1.0&callback=?&rsz=large&cx=009024607379464921389:3-je6z-lleq&q=";
+    var url = "http://ajax.googleapis.com/ajax/services/search/web?v=1.0&callback=?&rsz=large&cx=" + google_cse_cx + "&q=";
     url += encodeURIComponent(text);
     var main = jQuery("div#main");
     main.html('<p class="ajax-loader">Searching on Google Custom Search...</p>');
