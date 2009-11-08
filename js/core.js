@@ -100,9 +100,10 @@ jQuery(document).ready(function () {
 
 // disqus api
 jQuery(document).ready(function () {
-    jQuery.jsonp({
+    jQuery.ajax({
+        dataType: "jsonp",
         cache: true,
-        url: "http://azuwis-comments.appspot.com/?limit=8&exclude=spam,killed",
+        url: "http://azuwis-comments.appspot.com/?limit=8&exclude=spam,killed&callback=?",
         success: function(data){
             var comment = jQuery('<ul>');
             jQuery.each(data.message, function(i,item){
