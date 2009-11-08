@@ -379,7 +379,8 @@ input.textfield,textarea {
 }
 .post .date {
 	background-position:0 -48px;
-	float:left
+	float:left;
+	margin-right:15px
 }
 .post .editpost,.post .comments,.post .addcomment {
 	margin-left:15px;
@@ -395,13 +396,17 @@ input.textfield,textarea {
 	background-position:0 -112px
 }
 .post .tags {
-	background-position:0 -80px
+	background-position:0 -80px;
+	float:left;
+	margin-right:15px
 }
 .post .categories {
 	background-position:0 -32px
 }
 .post .translate {
-	background-position:0 -208px
+	background-position:0 -208px;
+	float:left;
+	margin-right:15px
 }
 .post .content {
 	padding:5px 0 0 5px;
