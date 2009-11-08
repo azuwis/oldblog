@@ -7,7 +7,7 @@ class NotFoundPageHandler(webapp.RequestHandler):
     def get(self):
         self.error(404)
 	#self.redirect('/404.html')
-        self.response.out.write(template.render("../_site/404.html", {}))
+        self.response.out.write(template.render("404.html", {}))
 
 application = webapp.WSGIApplication([('/.*', NotFoundPageHandler)],
                                      debug=True)

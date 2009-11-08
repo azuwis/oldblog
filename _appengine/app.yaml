@@ -11,18 +11,22 @@ handlers:
 - url: /(.*\.(html|xml))
   static_files: _site/\1
   upload: _site/.*
+  expiration: "30m"
 
 - url: /(.*\.js)
   static_files: _site/\1
   upload: _site/.*
+  expiration: "20m"
 
 - url: /(.*\.css)
   static_files: _site/\1
   upload: _site/.*
+  expiration: "1d"
 
 - url: /(.*\.(gif|png|jpg|cur|ico))
   static_files: _site/\1
   upload: _site/.*
+  expiration: "1d"
 
 - url: /.*
   script: main.py
