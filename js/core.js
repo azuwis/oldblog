@@ -72,19 +72,24 @@
     }
 })();
 
-var gcse = function(text){
+var gcse = function(text, start){
     if (typeof(google_cse_cx) == 'undefined') {
         alert("google custom search id not set");
         return;
     }
+    if (typeof(start) == 'undefined') {
+        var start = 0;
+    }
     jQuery("form#cse-search-box input#searchtxt").val(text);
-    var url = "http://ajax.googleapis.com/ajax/services/search/web?v=1.0&callback=?&rsz=large&cx=" + google_cse_cx + "&q=";
-    url += encodeURIComponent(text);
+    var url = "http://ajax.googleapis.com/ajax/services/search/web?v=1.0&callback=?&rsz=large"
+    url += "&cx=" + google_cse_cx;
+    url += "&start=" + start;
+    url += "&q=" + encodeURIComponent(text);
     var main = jQuery("div#main");
     main.html('<p class="ajax-loader">Searching on Google Custom Search...</p>');
     jQuery.getJSON(url, function (data) {
         if (data.responseData.results && data.responseData.results.length > 0) {
-            main.pureJSTemplate({id:"gcse", data:{r:data.responseData.results}});
+            main.pureJSTemplate({id:"gcse", data:{r:data.responseData.results, c:data.responseData.cursor, t:text}});
         } else {
             main.find("p").removeClass("ajax-loader").append(" Found nothing.");
         }

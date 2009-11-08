@@ -69,7 +69,7 @@
 				</div>
 			</form>
 			</div>
-			<textarea id="gcse" style="display:none">
+			<textarea id="gcse" style="display:none;">
 				<#for(var i=0; i<data.r.length; i++) {
 				var title = data.r[i].titleNoFormatting.replace("| {{ site.title }}", "");
 				#>
@@ -78,6 +78,21 @@
 					<div class="content"><#=data.r[i].content#></div>
 				</div>
 				<#}#>
+				<div id="pagenavi">
+					<div class="wp-pagenavi">
+							<span class="pages">Page <#=data.c.currentPageIndex+1#> of <#=data.c.pages.length#></span>
+							<#for(var i=0; i<data.c.pages.length; i++) {
+							if (i == data.c.currentPageIndex) {#>
+							<span class="current"><#=i+1#></span>
+							<#} else {#>
+							<a class="page" title="<#=data.c.pages[i].label#>" href='javascript:gcse("<#=data.t#>",<#=data.c.pages[i].start#>);'><#=data.c.pages[i].label#></a>
+							<#}}#>
+							<#if (data.c.pages.length == 8) {#>
+							<span class="extend">...</span>
+							<a class="last" title="More &raquo;" href="<#=data.c.moreResultsUrl#>" target="_blank">More &raquo;</a>
+							<#}#>
+					</div>
+                </div>
 			</textarea>
 	<!-- searchbox END -->
 
