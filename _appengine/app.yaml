@@ -25,7 +25,4 @@ handlers:
   upload: _site/.*
 
 - url: /.*
-  script: _appengine/main.py
-
-skip_files:
-- ^(?!_(site|appengine)/).*$
+  script: main.py
