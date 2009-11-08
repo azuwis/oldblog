@@ -1,48 +1,3 @@
-// append inc/translate.html to doc
-(function () {
-    jQuery(document).ready(function() {
-        jQuery.ajax({
-            url: "/inc/translate.html",
-            success: function (html) {
-                jQuery('body').append(html);
-            }
-        });
-    });
-})();
-
-// display tag cloud in side bar
-(function () {
-    jQuery(document).ready(function() {
-        jQuery.ajax({
-            url: "/inc/tagcloud.html",
-            success: function (html) {
-                jQuery('div#tag_cloud.widget').append(html);
-            }
-        });
-    });
-})();
-
-// display feeds in side bar
-(function () {
-    jQuery(document).ready(function() {
-        jQuery.ajax({
-            url: "/inc/feeds.html",
-            success: function (html) {
-                jQuery('div#subscribe').append(html)
-                .hover(function () {
-                    jQuery(this).find('ul').css({
-                        left: jQuery('#feedrss').cumulativeOffset(this)[0],
-                        top: jQuery('#feedrss').cumulativeOffset(this)[1]
-                    }).fadeIn(200)
-                },
-                function () {
-                    jQuery(this).find('ul').fadeOut(400)
-                });
-            }
-        });
-    });
-})();
-
 // google cse search box
 (function () {
     var searchbox = document.getElementById("searchbox");
@@ -95,17 +50,6 @@ var gcse = function(text, start){
         }
     });
 };
-
-jQuery(document).ready(function () {
-    jQuery("form#cse-search-box").submit(function(){
-        gcse(jQuery(this).find("input#searchtxt").val());
-        return false;
-    });
-    jQuery(".post .tags a").click(function(){
-        gcse(jQuery(this).text());
-        return false;
-    });
-});
 
 // disqus api
 jQuery(document).ready(function () {
@@ -171,5 +115,44 @@ jQuery(document).ready(function () {
             offset: 0
         });
         return false
-    })
+    });
+    // display tag cloud in side bar
+    jQuery.ajax({
+        url: "/inc/tagcloud.html",
+        success: function (html) {
+            jQuery('div#tag_cloud.widget').append(html);
+        }
+    });
+    // display feeds in side bar
+    jQuery.ajax({
+        url: "/inc/feeds.html",
+        success: function (html) {
+            jQuery('div#subscribe').append(html)
+            .hover(function () {
+                jQuery(this).find('ul').css({
+                    left: jQuery('#feedrss').cumulativeOffset(this)[0],
+                    top: jQuery('#feedrss').cumulativeOffset(this)[1]
+                }).fadeIn(200)
+            },
+            function () {
+                jQuery(this).find('ul').fadeOut(400)
+            });
+        }
+    });
+    // append inc/translate.html to doc
+    jQuery.ajax({
+        url: "/inc/translate.html",
+        success: function (html) {
+            jQuery('body').append(html);
+        }
+    });
+    // google ajax search
+    jQuery("form#cse-search-box").submit(function(){
+        gcse(jQuery(this).find("input#searchtxt").val());
+        return false;
+    });
+    jQuery(".post .tags a").click(function(){
+        gcse(jQuery(this).text());
+        return false;
+    });
 });
