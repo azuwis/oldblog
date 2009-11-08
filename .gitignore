@@ -1,3 +1,4 @@
 _site
 _trash
-index.yaml
+_appengine/404.html
+_appengine/index.yaml
