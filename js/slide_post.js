@@ -14,21 +14,22 @@
 			loadPost(id);
                     }
                     jQuery(pc).slideDown();
-                    jQuery(this).removeClass('collapse').addClass('expand')
+		    jQuery(this).removeClass('collapse').addClass('expand');
                 },
                 function () {
                     jQuery(pc).slideUp();
-                    jQuery(this).removeClass('expand').addClass('collapse')
-                }).prependTo(jQuery('#' + jq(id) + ' h1'))
+		    jQuery(this).removeClass('expand').addClass('collapse');
+		}).prependTo(jQuery('#' + jq(id) + ' h1'));
             }
         });
         if (PRE_LOAD > 0) {
             jQuery('div.post a.toggle').each(function (index) {
                 if (index < PRE_LOAD) {
-		    if(!jQuery(this).parent().parent().find(".gcse").length > 0)
-                        jQuery(this).click()
+		    if(jQuery(this).parent().parent().find(".gcse").length == 0) {
+			jQuery(this).click();
+                    }
                 }
-            })
+	    });
         }
     });
     function jq(myid) {
@@ -43,20 +44,20 @@
             dataType: 'html',
             contentType: 'application/json; charset=utf-8',
             beforeSend: function (data) {
-                loadPostContent(id, '<p class="ajax-loader">Loading...</p>')
+		loadPostContent(id, '<p class="ajax-loader">Loading...</p>');
             },
             success: function (data) {
 		data = jQuery(data).find('div.post div.content').html();
-                loadPostContent(id, data)
+		loadPostContent(id, data);
             },
             error: function (data) {
-                loadPostContent(id, '<p>Oops, failed to load data. <small><a href="javascript:void(0);" onclick="POS.loadPost(\'' + id + '\');">[Reload]</a></small></p>')
+		loadPostContent(id, '<p>Oops, failed to load data. <small><a href="javascript:void(0);" onclick="POS.loadPost(\'' + id + '\');">[Reload]</a></small></p>');
             }
-        })
+	});
     }
     function loadPostContent(id, data) {
-        jQuery('#' + jq(id) + ' .content').html(data)
+	jQuery('#' + jq(id) + ' .content').html(data);
     }
     window['POS'] = {};
-    window['POS']['loadPost'] = loadPost
+    window['POS']['loadPost'] = loadPost;
 })();

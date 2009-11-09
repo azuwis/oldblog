@@ -13,18 +13,18 @@
             searchtxt.value = "";
             searchtxt.className = searchtxt.className.replace(" searchtip", "");
         }
-    }
+    };
     searchtxt.onblur = function(e) {
         if(searchtxt.value == "") {
             searchtxt.className += " searchtip";
             searchtxt.value = tiptext;
         }
-    }
+    };
     searchbtn.onclick = function(e) {
         if(searchtxt.value == "" || searchtxt.value == tiptext) {
             return false;
         }
-    }
+    };
 })();
 
 var gcse = function(text, start){
@@ -33,10 +33,10 @@ var gcse = function(text, start){
         return;
     }
     if (typeof(start) == 'undefined') {
-        var start = 0;
+        start = 0;
     }
     jQuery("form#cse-search-box input#searchtxt").val(text);
-    var url = "http://ajax.googleapis.com/ajax/services/search/web?v=1.0&callback=?&rsz=large"
+    var url = "http://ajax.googleapis.com/ajax/services/search/web?v=1.0&callback=?&rsz=large";
     url += "&cx=" + google_cse_cx;
     url += "&start=" + start;
     url += "&q=" + encodeURIComponent(text);
@@ -74,10 +74,10 @@ jQuery(document).ready(function () {
                     jQuery('<li class="rc_item">').html(
                         jQuery('<div class="rc_avatar rc_left">').html(
                             jQuery('<img>').attr({
-                                class: 'avatar avatar-32 photo',
-                                width: '32',
-                                height: '32',
-                                src: avatar
+                                "class": 'avatar avatar-32 photo',
+                                "width": '32',
+                                "height": '32',
+                                "src": avatar
                             })
                         )
                     ).append(
@@ -98,25 +98,24 @@ jQuery(document).ready(function () {
 
 // extract from base.js of inove theme
 jQuery.fn.cumulativeOffset = function (e) {
-    var t = 0,
-    l = 0;
+    var t = 0, l = 0;
     do {
         t += e.offsetTop || 0;
         l += e.offsetLeft || 0;
-        e = e.offsetParent
+	e = e.offsetParent;
     } while (e);
-    return[l, t]
+    return[l, t];
 };
 jQuery(document).ready(function () {
     jQuery('a[rel*="external"]').click(function () {
         window.open(this.href);
-        return false
+	return false;
     });
     jQuery('a[href!="#"][href!="#ViewPollResults"][href^="#"]').click(function () {
         jQuery.scrollTo(this.href.replace(/^.*#/g, '#'), 400, {
             offset: 0
         });
-        return false
+	return false;
     });
     // display tag cloud in side bar
     jQuery("div#tag_cloud.widget").load("/inc/tagcloud.html");
@@ -129,10 +128,10 @@ jQuery(document).ready(function () {
                 jQuery(this).find('ul').css({
                     left: jQuery('#feedrss').cumulativeOffset(this)[0],
                     top: jQuery('#feedrss').cumulativeOffset(this)[1]
-                }).fadeIn(200)
+		}).fadeIn(200);
             },
             function () {
-                jQuery(this).find('ul').fadeOut(400)
+		jQuery(this).find('ul').fadeOut(400);
             });
         }
     });
