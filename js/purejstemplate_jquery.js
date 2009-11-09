@@ -11,9 +11,11 @@
 		var tplID=options.id;
 		var input= options.data;
 		var tplObj=tplMap[tplID];
+		var tpl=options.tmpl;
 	
 		if(!tplObj) {
-			var tpl = document.getElementById(tplID).value;
+			if(typeof(tpl) == undefined)
+				var tpl = document.getElementById(tplID).value;
 			
 			var leftjs=String.fromCharCode(21);
 			var leftjsout=leftjs + "=";

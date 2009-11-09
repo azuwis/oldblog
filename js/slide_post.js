@@ -3,17 +3,21 @@
     jQuery(document).ready(function () {
         jQuery('div.post').each(function () {
             var id = jQuery(this).attr('id');
+            var pc = '#' + jq(id) + ' .content';
             if (/^post\-/.test(id)) {
                 var toggle = jQuery('<a href="javascript:void(0);" class="toggle"></a>');
                 toggle.toggle(function () {
-                    if (jQuery('#' + jq(id) + ' .content').text() == '') {
-                        loadPost(id)
+                    if (jQuery(pc).text() == '') {
+			loadPost(id);
+		    } else if (jQuery(pc).find(".gcse").length > 0) {
+			jQuery(pc).hide();
+			loadPost(id);
                     }
-                    jQuery('#' + jq(id) + ' .content').slideDown();
+                    jQuery(pc).slideDown();
                     jQuery(this).removeClass('collapse').addClass('expand')
                 },
                 function () {
-                    jQuery('#' + jq(id) + ' .content').slideUp();
+                    jQuery(pc).slideUp();
                     jQuery(this).removeClass('expand').addClass('collapse')
                 }).prependTo(jQuery('#' + jq(id) + ' h1'))
             }
@@ -21,7 +25,8 @@
         if (PRE_LOAD > 0) {
             jQuery('div.post a.toggle').each(function (index) {
                 if (index < PRE_LOAD) {
-                    jQuery(this).click()
+		    if(!jQuery(this).parent().parent().find(".gcse").length > 0)
+                        jQuery(this).click()
                 }
             })
         }

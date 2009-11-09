@@ -44,7 +44,9 @@ var gcse = function(text, start){
     div.html('<p class="ajax-loader">Searching on Google Custom Search...</p>');
     jQuery.getJSON(url, function (data) {
         if (data.responseData.results && data.responseData.results.length > 0) {
-            div.pureJSTemplate({id:"gcse", data:{r:data.responseData.results, c:data.responseData.cursor, t:text}});
+	    jQuery.get("/inc/gcse.html", function(tmpl){
+                div.pureJSTemplate({id:"gcse", data:{r:data.responseData.results, c:data.responseData.cursor, t:text}, tmpl:tmpl});
+            });
         } else {
             div.find("p").removeClass("ajax-loader").append(" Found nothing.");
         }
@@ -117,12 +119,7 @@ jQuery(document).ready(function () {
         return false
     });
     // display tag cloud in side bar
-    jQuery.ajax({
-        url: "/inc/tagcloud.html",
-        success: function (html) {
-            jQuery('div#tag_cloud.widget').append(html);
-        }
-    });
+    jQuery("div#tag_cloud.widget").load("/inc/tagcloud.html");
     // display feeds in side bar
     jQuery.ajax({
         url: "/inc/feeds.html",
