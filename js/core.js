@@ -40,13 +40,13 @@ var gcse = function(text, start){
     url += "&cx=" + google_cse_cx;
     url += "&start=" + start;
     url += "&q=" + encodeURIComponent(text);
-    var main = jQuery("div#main");
-    main.html('<p class="ajax-loader">Searching on Google Custom Search...</p>');
+    var div = jQuery("div#main");
+    div.html('<p class="ajax-loader">Searching on Google Custom Search...</p>');
     jQuery.getJSON(url, function (data) {
         if (data.responseData.results && data.responseData.results.length > 0) {
-            main.pureJSTemplate({id:"gcse", data:{r:data.responseData.results, c:data.responseData.cursor, t:text}});
+            div.pureJSTemplate({id:"gcse", data:{r:data.responseData.results, c:data.responseData.cursor, t:text}});
         } else {
-            main.find("p").removeClass("ajax-loader").append(" Found nothing.");
+            div.find("p").removeClass("ajax-loader").append(" Found nothing.");
         }
     });
 };
