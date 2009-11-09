@@ -118,7 +118,12 @@ jQuery(document).ready(function () {
 	return false;
     });
     // display tag cloud in side bar
-    jQuery("div#tag_cloud.widget").load("/inc/tagcloud.html");
+    jQuery.ajax({
+        url: "/inc/tagcloud.html",
+        success: function (html) {
+            jQuery("div#tag_cloud.widget").append(html);
+        }
+    });
     // display feeds in side bar
     jQuery.ajax({
         url: "/inc/feeds.html",
