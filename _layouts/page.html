@@ -1,0 +1,15 @@
+---
+layout: default
+---
+<!-- post START -->
+<div class="post" id="post-{{ post_id }}">
+    <h1>{{ page.title }}</h1>
+    <div class="content">
+        {{ content }}
+        <div class="under">
+            <span id="translate_button_post-{{ post_id }}" class="translate"><a href="javascript:void(0);" onclick="show_translate_popup('en', 'post', '{{ post_id }}');">Translate</a></span>
+        </div>
+        <div class="fixed"></div>
+    </div>
+</div>
+<!-- post END -->
