@@ -29,6 +29,6 @@ dependence:
     # aptitude download fusion-icon=0.1.2+git20080216.shame-1
     # dpkg-deb -x fusion-icon_0.1.2+git20080216.shame-1_amd64.deb deb/
     # dpkg-deb -e fusion-icon_0.1.2+git20080216.shame-1_amd64.deb deb/DEBIAN/
-    # vi tmp/DEBIAN/control ...edit the file
+    # vi deb/DEBIAN/control ...edit the file
     # dpkg-deb -b deb/ my.deb
     # dpkg -i my.deb

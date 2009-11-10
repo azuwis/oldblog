@@ -21,7 +21,7 @@ handlers:
 - url: /(.*\.css)
   static_files: _site/\1
   upload: _site/.*
-  expiration: "1d"
+  expiration: "6h"
 
 - url: /(.*\.(gif|png|jpg|cur|ico))
   static_files: _site/\1
