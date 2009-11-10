@@ -2,7 +2,7 @@
 layout: null
 ---
 <div class="messagebox">
-	<strong>Note:</strong> Search results are from Google custom search, may be a bit outdated.
+	About <#=data.c.estimatedResultCount#> results for <strong><#=data.t#></strong>.
 </div>
 <#for(var i=0; i<data.r.length; i++) {
 var title = data.r[i].titleNoFormatting.replace("| {{ site.title }}", "");
@@ -22,6 +22,9 @@ if (postid && postid.length == 2) {
 	</div>
 </div>
 <#}#>
+<div class="messagebox">
+	<strong>Note:</strong> Search results are from Google custom search, may be a bit outdated.
+</div>
 <div id="pagenavi">
 	<div class="wp-pagenavi">
 		<span class="pages">Page <#=data.c.currentPageIndex+1#> of <#=data.c.pages.length#></span>
@@ -37,4 +40,4 @@ if (postid && postid.length == 2) {
 		<#}#>
 	</div>
 </div>
-<#jQuery.getScript("/js/slide_post.js");#>
+<#jQuery.ajax({url:"/js/slide_post.js",dataType:"script",cache:true});#>

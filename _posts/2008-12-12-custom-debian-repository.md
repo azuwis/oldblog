@@ -1,6 +1,6 @@
 ---
 layout: post
-tag: [debian]
+tags: [debian]
 ---
 This is not a complete howto, I just wrote it for memorizing.
 

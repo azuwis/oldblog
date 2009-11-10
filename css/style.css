@@ -630,7 +630,8 @@ input.textfield,textarea {
 	background:#EDC
 }
 #tag_cloud a {
-	line-height:130%
+	line-height:130%;
+	text-transform:capitalize
 }
 #footer {
 	background:url(img/footer.jpg) 0 0 no-repeat;

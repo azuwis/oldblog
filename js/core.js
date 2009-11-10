@@ -41,7 +41,7 @@ var gcse = function(text, start){
     url += "&start=" + start;
     url += "&q=" + encodeURIComponent(text);
     var div = jQuery("div#main");
-    div.html('<p class="ajax-loader">Searching on Google Custom Search...</p>');
+    div.html('<p class="ajax-loader">Searching on Google Custom Search"' + text + '"...</p>');
     jQuery.getJSON(url, function (data) {
         if (data.responseData.results && data.responseData.results.length > 0) {
 	    jQuery.get("/inc/gcse.html", function(tmpl){
