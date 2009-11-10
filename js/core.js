@@ -121,7 +121,8 @@ jQuery(document).ready(function () {
     jQuery.ajax({
         url: "/inc/tagcloud.html",
         success: function (html) {
-            jQuery("div#tag_cloud.widget").append(html);
+            jQuery("div#tag_cloud.widget").append(html)
+            .find("a").tagcloud({size:{start: 8, end: 16, unit: "pt"}});
         }
     });
     // display feeds in side bar

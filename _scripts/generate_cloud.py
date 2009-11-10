@@ -83,6 +83,6 @@ if __name__ == '__main__':
     for t in sorted(sorted_keys[:cloud_size]):
         rank = max_ranks - int(math.log(counts[t] - min_count + 1) * factor)
         fontsize = 8.0 + rank * 8.0 / max_ranks
-        print "<a href='javascript:gcse(\"%s\");' class='' title='%d topics' rel='tag' style='font-size: %fpt;'>%s</a>" % \
-	    (t, counts[t], fontsize, t)
+        print "<a href='javascript:gcse(\"%s\");' title='%d topics' rel='%d'>%s</a>" % \
+	    (t, counts[t], counts[t], t)
     #<a href='http://www.neoease.com/tag/release/' class='tag-link-13' title='41 topics' rel="tag" style='font-size: 11.102040816327pt;'>Release</a>
