@@ -8,7 +8,7 @@ handlers:
   static_files: _site/index.html
   upload: _site/index.html
 
-- url: /(.*\.(html|xml))
+- url: /(.*\.(html|xml|txt))
   static_files: _site/\1
   upload: _site/.*
   expiration: "30m"
