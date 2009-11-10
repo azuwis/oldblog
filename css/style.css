@@ -100,7 +100,12 @@ blockquote,pre {
 	background:#F4F5F7 url(img/blockquote.gif) 3px 3px no-repeat;
 	border:1px dashed #CCC;
 	padding:8px 12px 8px 36px;
-	margin:5px 0
+	margin:5px 0;
+	white-space: pre-wrap; /* css-3 */
+	white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+	white-space: -pre-wrap; /* Opera 4-6 */
+	white-space: -o-pre-wrap; /* Opera 7 */
+	word-wrap: break-word /* Internet Explorer 5.5+ */
 }
 .more-link {
 	font-size:11px

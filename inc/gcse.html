@@ -10,9 +10,11 @@ if (postid && postid.length == 2) {
 #>
 <div class="post" id="post-<#=postid#>">
 	<h1><a class="title" href="<#=data.r[i].url#>"><#=title#></a></h1>
-	<div class="content">
-		<div class="gcse">
-			<#=data.r[i].content#>
+	<div class="content-wrap">
+		<div class="content">
+			<div class="gcse">
+				<#=data.r[i].content#>
+			</div>
 		</div>
 	</div>
 </div>

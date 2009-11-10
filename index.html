@@ -19,7 +19,9 @@ title:  Homepage
         <span class="comments"><a href="{{ page.url}}#disqus_thread" title="Comment on {{ page.title }}">View comments</a></span>
         <div class="fixed"></div>
     </div>
-    <div class="content blank_content"></div>
+    <div class="content-wrap">
+        <div class="content"></div>
+    </div>
 </div>
 {% endfor %}
 
@@ -64,4 +66,5 @@ title:  Homepage
     <div class="fixed"></div>
 </div>
 
+<script type='text/javascript' src='/js/jquery.truncator.js'></script>
 <script type='text/javascript' src='/js/slide_post.js'></script>

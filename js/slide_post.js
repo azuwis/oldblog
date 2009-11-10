@@ -3,21 +3,21 @@
     jQuery(document).ready(function () {
         jQuery('div.post').each(function () {
             var id = jQuery(this).attr('id');
-            var pc = '#' + jq(id) + ' .content';
+	    var pc = jQuery('#' + jq(id) + ' .content-wrap');
             if (/^post\-/.test(id)) {
                 var toggle = jQuery('<a href="javascript:void(0);" class="toggle"></a>');
                 toggle.toggle(function () {
-                    if (jQuery(pc).text() == '') {
+		    if (pc.find(".content").text() == '') {
 			loadPost(id);
-		    } else if (jQuery(pc).find(".gcse").length > 0) {
-			jQuery(pc).hide();
+		    } else if (pc.find(".gcse").length > 0) {
+			pc.hide();
 			loadPost(id);
                     }
-                    jQuery(pc).slideDown();
+		    pc.show();
 		    jQuery(this).removeClass('collapse').addClass('expand');
                 },
                 function () {
-                    jQuery(pc).slideUp();
+                    pc.hide();
 		    jQuery(this).removeClass('expand').addClass('collapse');
 		}).prependTo(jQuery('#' + jq(id) + ' h1'));
             }
@@ -51,12 +51,12 @@
 		loadPostContent(id, data);
             },
             error: function (data) {
-		loadPostContent(id, '<p>Oops, failed to load data. <small><a href="javascript:void(0);" onclick="POS.loadPost(\'' + id + '\');">[Reload]</a></small></p>');
+		loadPostContent(id, '<p>Oops, failed to load data. Try the post link directly or <small><a href="javascript:void(0);" onclick="POS.loadPost(\'' + id + '\');">[Reload]</a></small></p>');
             }
 	});
     }
     function loadPostContent(id, data) {
-	jQuery('#' + jq(id) + ' .content').html(data);
+	jQuery('#' + jq(id) + ' .content').html(data).truncate({max_length: 1024});
     }
     window['POS'] = {};
     window['POS']['loadPost'] = loadPost;
