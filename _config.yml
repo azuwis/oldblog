@@ -35,9 +35,8 @@ nav:
     - name:     Blog
       url:      /
       
-    - name:     Apps
-    
     - name:     Projects
+      url:      /projects.html
         
     - name:     About
       url:      /about.html
