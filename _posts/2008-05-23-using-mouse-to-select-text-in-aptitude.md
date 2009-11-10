@@ -1,10 +1,9 @@
 ---
 layout: post
-title:  在 aptitude 里用鼠标选择文字
 tags:    [debian, tip]
 ---
 
-困扰我很长时间的问题，原来在 aptitude 的 FAQ 里就有答案，原话是:
+It obsessed me for a long time, but today I found the answer in aptitude's FAQ:
 
     1) I want to select text, why doesn't aptitude let me disable the mouse?
 
@@ -12,6 +11,6 @@ tags:    [debian, tip]
         disables text selection.  However, you can override this behavior and
         perform a selection by holding the Shift key down.
 
-原来只要按住 Shift，就可以在 aptitude 的 curses 程序里用鼠标选择和粘贴文字。
+So, just hold down shift key, copying and pasting text in aptitude's curses interface will work as expected.
 
-看来每用一个软件前都要好好的看一下它的 FAQ。
+It's always good to look at software's FAQ before using it.
