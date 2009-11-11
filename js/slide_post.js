@@ -13,11 +13,11 @@
 			pc.hide();
 			loadPost(id);
                     }
-		    pc.show();
+		    pc.fadeIn();
 		    jQuery(this).removeClass('collapse').addClass('expand');
                 },
                 function () {
-                    pc.hide();
+                    pc.fadeOut();
 		    jQuery(this).removeClass('expand').addClass('collapse');
 		}).prependTo(jQuery('#' + jq(id) + ' h1'));
             }
