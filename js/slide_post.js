@@ -56,7 +56,7 @@
 	});
     }
     function loadPostContent(id, data) {
-	jQuery('#' + jq(id) + ' .content').html(data).truncate({max_length: 800});
+	jQuery('#' + jq(id) + ' .content').html(data).truncate({max_length: 1200});
     }
     window['POS'] = {};
     window['POS']['loadPost'] = loadPost;

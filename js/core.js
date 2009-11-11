@@ -43,13 +43,9 @@ var gcse = function(text, start){
     var div = jQuery("div#main");
     div.html('<p class="ajax-loader">Searching on Google Custom Search"' + text + '"...</p>');
     jQuery.getJSON(url, function (data) {
-        if (data.responseData.results && data.responseData.results.length > 0) {
-	    jQuery.get("/inc/gcse.html", function(tmpl){
-                div.pureJSTemplate({id:"gcse", data:{r:data.responseData.results, c:data.responseData.cursor, t:text}, tmpl:tmpl});
-            });
-        } else {
-            div.find("p").removeClass("ajax-loader").append(" Found nothing.");
-        }
+        jQuery.get("/inc/gcse.html", function(tmpl){
+            div.pureJSTemplate({id:"gcse", data:{r:data.responseData.results, c:data.responseData.cursor, t:text}, tmpl:tmpl});
+        });
     });
 };
 
