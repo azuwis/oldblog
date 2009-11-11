@@ -16,18 +16,16 @@
 <!-- coming posts -->
 
 <!-- posts -->
-<ul>
-    {% if page.title %}
-    <div class="widget">
-        <h3>Recent Entries</h3>
-        <ul>
-            {% for post in site.posts limit:5 %}
-            <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-            {% endfor %}
-        </ul>
-    </div>
-    {% endif %}
-</ul>
+{% if page.title %}
+<div class="widget">
+    <h3>Recent Entries</h3>
+    <ul>
+        {% for post in site.posts limit:5 %}
+        <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
 
 <!-- categories
 <div class="widget widget_categories">

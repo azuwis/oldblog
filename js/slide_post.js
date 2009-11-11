@@ -51,7 +51,7 @@
 		loadPostContent(id, data);
             },
             error: function (data) {
-		loadPostContent(id, '<p>Oops, failed to load data. Try the post link directly or <small><a href="javascript:void(0);" onclick="POS.loadPost(\'' + id + '\');">[Reload]</a></small></p>');
+		loadPostContent(id, '<p>Oops, It seems the post does not exist. Try the direct post link or <small><a href="javascript:void(0);" onclick="POS.loadPost(\'' + id + '\');">[Reload]</a></small>.</p><p>If you are searching or click any tag link, please see the note below.</p>');
             }
 	});
     }
