@@ -39,7 +39,7 @@
         var postId = id.slice(5);
         jQuery.ajax({
             type: 'GET',
-            url: postId.replace(/__/g,"/") + '.html',
+            url: postId == "__" ? "/" : postId.replace(/__/g,"/") + '.html',
             //cache: false,
             dataType: 'html',
             contentType: 'application/json; charset=utf-8',

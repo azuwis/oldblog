@@ -13,10 +13,13 @@ layout: null
 var title = data.r[i].titleNoFormatting.replace("| {{ site.title }}", "");
 var postid = data.r[i].url.match(/http:\/\/[^/]+(.*)/);
 if (postid && postid.length == 2) {
-	postid = postid[1].replace(/\.html$/,"").replace(/\//g,"__");
+	postid = "post-" + postid[1].replace(/\.html$/,"").replace(/\//g,"__");
+	if (postid == "post-__") {
+		postid = "homepage";
+	}
 }
 #>
-<div class="post" id="post-<#=postid#>">
+<div class="post" id="<#=postid#>">
 	<h1><a class="title" href="<#=data.r[i].url#>"><#=title#></a></h1>
 	<div class="content-wrap">
 		<div class="content">
