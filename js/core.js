@@ -55,7 +55,9 @@ function loadPost(id) {
         }
     });
     function loadPostContent(id, data) {
-        jQuery('#' + jq(id) + ' .content').html(data).truncate({max_length: 1200});
+	var pc = jQuery('#' + jq(id) + ' .content').html(data);
+	pc.find("img").fancyzoom();
+	pc.truncate();
     }
 };
 
@@ -222,6 +224,12 @@ jQuery(document).ready(function () {
     if (/^\/(index\.|$)/.test(window.location.pathname)) {
         slide_post();
     }
+    // fancy zoom
+    jQuery.fn.fancyzoom.defaultsOptions.imgDir = "/lib/fancyzoom/ressources/";
+    jQuery.fn.fancyzoom.defaultsOptions.overlay = 0.3;
+    jQuery(".post .content img").fancyzoom();
+    // truncater
+    jQuery.fn.truncate.defaults = {more: 'More &raquo;', max_length: 1200, less: '&laquo; Less'};
 });
 
 window['gcse'] = gcse;
