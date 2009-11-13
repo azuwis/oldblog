@@ -28,5 +28,8 @@ handlers:
   upload: _site/.*
   expiration: "1d"
 
+- url: /stack
+  static_dir: _site/stack
+
 - url: /.*
   script: main.py
