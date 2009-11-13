@@ -9,7 +9,7 @@ title:  Homepage
 <div class="post" id="post-{{ post_id }}">
     <h1><a class="title" href="{{ page.url }}" rel="bookmark">{{ page.title }}</a></h1>
     <div class="info">
-        <span class="date">{{ page.date | date:'%B %d, %Y' }}</span>
+        <span class="date">{{ page.date | date:'%b %d, %Y' }}</span>
         <span id="translate_button_post-{{ post_id }}" class="translate"><a href="javascript:void(0);" onclick="show_translate_popup('en', 'post', '{{ post_id }}');">Translate</a></span>
         <span class="tags">
             {% for tag in page.tags %}
