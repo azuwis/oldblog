@@ -114,6 +114,11 @@
 <!-- wrap END -->
 
 <!-- script -->
+{% if site.google.cse-cx %}
+<script type="text/javascript">
+var google_cse_cx = "{{ site.google.cse-cx }}";
+</script>
+{% endif %}
 <script type="text/javascript" src="/lib/fancyzoom/jquery.fancyzoom.min.js"></script>
 <script type="text/javascript" src="/lib/fancyzoom/jquery.shadow.js"></script>
 <script type='text/javascript' src='/js/jquery.truncator.js'></script>
