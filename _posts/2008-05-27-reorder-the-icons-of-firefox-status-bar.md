@@ -3,6 +3,7 @@ layout: post
 title: 给 Firefox 状态栏图标重新排位
 tags: [firefox]
 ---
+![Firefox](http://www.mozilla.com/img/tignish/about/logo/download/logo-only-preview.png){:.right}
 Firefox 自己并不能方便的给状态栏的图标重新排序，有一个扩展叫 [Organize Status Bar](https://addons.mozilla.org/en-US/firefox/addon/1759)，可以比较方便的做这个事情。但只是是为了重新排序而装一个扩展，似乎并不值得。
 
 其实，Firefox 状态栏的图标一般是由扩展产生的，图标的顺序跟扩展的安装顺序对应。通过改扩展的顺序，可以改变状态栏图标的顺序。

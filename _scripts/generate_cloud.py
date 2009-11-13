@@ -26,6 +26,9 @@ def find_tags(postfile):
 	    tags = l[5:].strip()
 	    break
 
+    if tags == '':
+        return [];
+
     # remove brackets
     lb = tags.find('[')
     rb = tags.rfind(']')
@@ -38,7 +41,7 @@ if __name__ == '__main__':
     cloud_size = int(sys.argv[1])
     max_ranks = int(sys.argv[2])
     postpath = os.path.join(sys.argv[3], '_posts')
-    posts = [i for i in os.listdir(postpath) if not os.path.isdir(i)]
+    posts = [i for i in os.listdir(postpath) if (not os.path.isdir(i) and not i.startswith(".") )]
 
     counts = {}
     for p in posts:
