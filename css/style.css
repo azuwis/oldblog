@@ -405,6 +405,9 @@ input.textfield,textarea {
 	float:left;
 	margin-right:15px
 }
+.post .tags a {
+	text-transform:capitalize
+}
 .post .categories {
 	background-position:0 -32px
 }
