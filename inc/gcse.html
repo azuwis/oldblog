@@ -7,7 +7,7 @@ layout: null
 	var results = "Nothing found";
 }#>
 <div class="messagebox">
-	<#=results#> for <strong><#=data.t#></strong>.
+	<#=results#> for <strong><#=data.t#></strong>.<a id="back" class="right" href="javascript:void(0);">&laquo;Back</a>
 </div>
 <#for(var i=0; i<data.r.length; i++) {
 var title = data.r[i].titleNoFormatting.replace("| {{ site.title }}", "");

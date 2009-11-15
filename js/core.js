@@ -1,7 +1,7 @@
 // slide post
 var slide_post = function () {
     var PRE_LOAD = 2;
-    jQuery('div.post').each(function () {
+    jQuery('div.post:visible').each(function () {
         var id = jQuery(this).attr('id');
         var pc = jQuery('#' + jq(id) + ' .content-wrap');
         if (/^post\-/.test(id)) {
@@ -19,11 +19,11 @@ var slide_post = function () {
             function () {
                 pc.slideUp();
     	    jQuery(this).removeClass('expand').addClass('collapse');
-    	}).prependTo(jQuery('#' + jq(id) + ' h1'));
+	}).prependTo(jQuery(this).find("h1"));
         }
     });
     if (PRE_LOAD > 0) {
-        jQuery('div.post a.toggle').each(function (index) {
+        jQuery('div.post:visible a.toggle').each(function (index) {
             if (index < PRE_LOAD) {
     	    if(jQuery(this).parent().parent().find(".gcse").length == 0) {
     		jQuery(this).click();
@@ -104,6 +104,15 @@ var gcse = function(text, start){
     url += "&start=" + start;
     url += "&q=" + encodeURIComponent(text);
     var div = jQuery("div#main");
+    if(div.length == 1) {
+        div.addClass("origin").hide();
+        div.after('<div id="main" class="gcse"></div>');
+        div = div.find("~ div#main.gcse");
+    } else {
+        div.filter(".origin").hide();
+        div.filter(".gcse").show();
+        div = div.filter(".gcse");
+    }
     div.html('<p class="ajax-loader">Searching on Google Custom Search"' + text + '"...</p>');
     jQuery.getJSON(url, function (data) {
         jQuery.ajax({
@@ -114,6 +123,10 @@ var gcse = function(text, start){
             }
         });
         slide_post();
+        div.find("a#back").click(function(){
+            jQuery("div#main.gcse").hide();
+            jQuery("div#main.origin").show();
+        });
     });
 };
 
