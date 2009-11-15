@@ -17,13 +17,8 @@
 
 <!-- posts -->
 {% if page.title %}
-<div class="widget">
+<div id="recent" class="widget">
     <h3>Recent Entries</h3>
-    <ul>
-        {% for post in site.posts limit:5 %}
-        <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-        {% endfor %}
-    </ul>
 </div>
 {% endif %}
 

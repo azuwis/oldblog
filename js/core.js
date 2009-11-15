@@ -117,49 +117,6 @@ var gcse = function(text, start){
     });
 };
 
-// disqus api
-jQuery(document).ready(function () {
-    jQuery.ajax({
-        dataType: "jsonp",
-        cache: true,
-        url: "http://azuwis-comments.appspot.com/?limit=8&exclude=spam,killed&callback=?",
-        success: function(data){
-            var comment = jQuery('<ul>');
-            jQuery.each(data.message, function(i,item){
-                var author = 'anonymous';
-                var avatar = 'http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=32';
-                if(item.is_anonymous == false) {
-                    author = item.author.username;
-                    if(item.author.has_avatar == true) {
-                        avatar = item.author.avatar.small;
-                    }
-                }
-                comment.append(
-                    jQuery('<li class="rc_item">').html(
-                        jQuery('<div class="rc_avatar rc_left">').html(
-                            jQuery('<img>').attr({
-                                "class": 'avatar avatar-32 photo',
-                                "width": '32',
-                                "height": '32',
-                                "src": avatar
-                            })
-                        )
-                    ).append(
-                        jQuery('<div class="rc_info">').html(
-                            jQuery('<span class="author_name">').html(
-                                jQuery('<a>').attr('href', item.thread.url + '#comment-' + item.id).text(author)
-                            )
-                        )
-                    ).append(
-                        jQuery('<div class="rc_excerpt">').text(item.message)
-                    )
-                );
-            });
-            jQuery('div#recent_comments.widget').append(comment);
-        }
-    });
-});
-
 // extract from base.js of inove theme
 jQuery.fn.cumulativeOffset = function (e) {
     var t = 0, l = 0;
@@ -180,14 +137,6 @@ jQuery(document).ready(function () {
             offset: 0
         });
 	return false;
-    });
-    // display tag cloud in side bar
-    jQuery.ajax({
-        url: "/inc/tagcloud.html",
-        success: function (html) {
-            jQuery("div#tag_cloud.widget").append(html)
-            .find("a").tagcloud({size:{start: 8, end: 16, unit: "pt"}});
-        }
     });
     // display feeds in side bar
     jQuery.ajax({
@@ -232,6 +181,61 @@ jQuery(document).ready(function () {
     jQuery.fn.truncate.defaults = {more: 'More &raquo;', max_length: 1200, less: '&laquo; Less'};
 });
 
+// display tag cloud in side bar
+jQuery.ajax({
+    url: "/inc/recent.html",
+    success: function (html) {
+	jQuery("div#recent.widget").append(html);
+    }
+});
+// display tag cloud in side bar
+jQuery.ajax({
+    url: "/inc/tagcloud.html",
+    success: function (html) {
+        jQuery("div#tag_cloud.widget").append(html)
+        .find("a").tagcloud({size:{start: 8, end: 16, unit: "pt"}});
+    }
+});
+// disqus api
+jQuery.ajax({
+    dataType: "jsonp",
+    cache: true,
+    url: "http://azuwis-comments.appspot.com/?limit=8&exclude=spam,killed&callback=?",
+    success: function(data){
+        var comment = jQuery('<ul>');
+        jQuery.each(data.message, function(i,item){
+            var author = 'anonymous';
+            var avatar = 'http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=32';
+            if(item.is_anonymous == false) {
+                author = item.author.username;
+                if(item.author.has_avatar == true) {
+                    avatar = item.author.avatar.small;
+                }
+            }
+            comment.append(
+                jQuery('<li class="rc_item">').html(
+                    jQuery('<div class="rc_avatar rc_left">').html(
+                        jQuery('<img>').attr({
+                            "class": 'avatar avatar-32 photo',
+                            "width": '32',
+                            "height": '32',
+                            "src": avatar
+                        })
+                    )
+                ).append(
+                    jQuery('<div class="rc_info">').html(
+                        jQuery('<span class="author_name">').html(
+                            jQuery('<a>').attr('href', item.thread.url + '#comment-' + item.id).text(author)
+                        )
+                    )
+                ).append(
+                    jQuery('<div class="rc_excerpt">').text(item.message)
+                )
+            );
+        });
+        jQuery('div#recent_comments.widget').append(comment);
+    }
+});
 window['gcse'] = gcse;
 window['slide_post'] = slide_post;
 window['loadPost'] = loadPost;
