@@ -51,7 +51,7 @@ function loadPost(id) {
     	loadPostContent(id, data);
         },
         error: function (data) {
-    	loadPostContent(id, '<p>Oops, It seems the post does not exist. Try the direct post link or <small><a href="javascript:void(0);" onclick="loadPost(\'' + id + '\');">[Reload]</a></small>.</p><p>If you are searching or click any tag link, please see the note below.</p>');
+    	loadPostContent(id, '<p>Oops, It seems the post does not exist. Try the direct post link above or <small><a href="javascript:void(0);" onclick="loadPost(\'' + id + '\');">[Reload]</a></small>.</p><p>If you are searching or click any tag link, please see the note below.</p>');
         }
     });
     function loadPostContent(id, data) {
