@@ -61,7 +61,8 @@
   }
 
   function truncateText(node, max_length) {
-    var text = squeeze(node.data);
+    //var text = squeeze(node.data);
+    var text = node.data;
     if (trailing_whitespace)  // remove initial whitespace if last text
       text = text.replace(/^ /, '');  // node had trailing whitespace.
     trailing_whitespace = !!text.match(/ $/);
