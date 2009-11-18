@@ -41,11 +41,11 @@ var slide_post = function () {
                     pc.hide();
                     loadPost(id);
                 }
-                pc.fadeIn();
+                pc.fadeIn(200);
                 jQuery(this).removeClass('collapse').addClass('expand');
             },
             function () {
-                pc.slideUp();
+                pc.hide();
                 jQuery(this).removeClass('expand').addClass('collapse');
             }).prependTo(jQuery(this).find("h1"));
         }
@@ -131,7 +131,7 @@ var gcse = function (text, start) {
         slide_post();
         div.find("a#back").click(function () {
             jQuery("div#main.gcse").hide();
-            jQuery("div#main.origin").show();
+            jQuery("div#main.origin").fadeIn(200);
         });
     });
 };
