@@ -10,7 +10,7 @@
     <meta name="author" content="{{ site.author.name }}" />
     <meta name="description" content="{{ site.description }}" />
 
-    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
     <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="{{ site.feed }}" />
 
 	<!-- style -->
@@ -25,8 +25,7 @@
 <link rel='index' title='{{ site.title }}' href='{{ site.url }}' />
 
 <script type='text/javascript' src='/js/jquery.js'></script>
-<!-- TODO syntax highlight 
-<link rel="stylesheet" href="http://www.neoease.com/wp-content/themes/inove/wp-syntax.css" type="text/css" media="screen" /> -->
+<link rel="stylesheet" href="/lib/prettify/style.css" type="text/css" media="screen" />
 
 </head>
 

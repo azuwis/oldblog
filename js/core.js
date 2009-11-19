@@ -7,6 +7,11 @@ var loadPost = function (id) {
         var pc = jQuery('#' + jq(id) + ' .content').html(data);
         pc.find("img").fancyzoom();
         pc.truncate();
+        pc.find("pre code").parent().each(function() {
+            jQuery(this).addClass('prettyprint');
+            prettify = true;
+        });
+        mypretty();
     };
     var postId = id.slice(5);
     jQuery.ajax({
@@ -60,7 +65,24 @@ var slide_post = function () {
         });
     }
 };
-
+/* prettify */
+var prettify = false;
+var mypretty = function() {
+    if (prettify) {
+	if (typeof(prettyPrint) == "function") {
+            prettyPrint();
+        } else {
+            jQuery.ajax({
+                dataType: "script",
+                cache: true,
+                url: "/lib/prettify/prettify.js",
+                success: function() {
+		    prettyPrint();
+                }
+            });
+        }
+    }
+};
 /* google cse search box */
 (function () {
     var searchtxt = document.getElementById("searchtxt");
@@ -201,6 +223,12 @@ jQuery(document).ready(function () {
         max_length: 1200,
         less: '&laquo; Less'
     };
+    /* prettify */
+    jQuery("pre code").parent().each(function() {
+        jQuery(this).addClass('prettyprint');
+        prettify = true;
+    });
+    mypretty();
 });
 
 /* display tag cloud in side bar */
