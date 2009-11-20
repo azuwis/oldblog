@@ -2,16 +2,36 @@
 var jq = function (myid) {
     return myid.replace(/:/g, "\\:").replace(/\./g, "\\.").replace(/\//g, "\\/");
 };
+/* prettify */
+jQuery.fn.pretty = function() {
+    var prettify = false;
+    this.find("pre code").filter(function(){
+	return /^#!\//.test(jQuery(this).text());
+    }).parent().each(function() {
+        jQuery(this).addClass('prettyprint');
+	prettify = true;
+    });
+    if (prettify) {
+	if (typeof(prettyPrint) == "function") {
+            prettyPrint();
+        } else {
+            jQuery.ajax({
+                dataType: "script",
+                cache: true,
+                url: "/lib/prettify/prettify.js",
+                success: function() {
+		    prettyPrint();
+                }
+            });
+        }
+    }
+}
 var loadPost = function (id) {
     var loadPostContent = function (id, data) {
         var pc = jQuery('#' + jq(id) + ' .content').html(data);
         pc.find("img").fancyzoom();
+	pc.pretty();
         pc.truncate();
-        pc.find("pre code").parent().each(function() {
-            jQuery(this).addClass('prettyprint');
-            prettify = true;
-        });
-        mypretty();
     };
     var postId = id.slice(5);
     jQuery.ajax({
@@ -63,24 +83,6 @@ var slide_post = function () {
                 }
             }
         });
-    }
-};
-/* prettify */
-var prettify = false;
-var mypretty = function() {
-    if (prettify) {
-	if (typeof(prettyPrint) == "function") {
-            prettyPrint();
-        } else {
-            jQuery.ajax({
-                dataType: "script",
-                cache: true,
-                url: "/lib/prettify/prettify.js",
-                success: function() {
-		    prettyPrint();
-                }
-            });
-        }
     }
 };
 /* google cse search box */
@@ -224,11 +226,7 @@ jQuery(document).ready(function () {
         less: '&laquo; Less'
     };
     /* prettify */
-    jQuery("pre code").parent().each(function() {
-        jQuery(this).addClass('prettyprint');
-        prettify = true;
-    });
-    mypretty();
+    jQuery(document).pretty();
 });
 
 /* display tag cloud in side bar */
