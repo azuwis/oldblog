@@ -56,26 +56,24 @@
     };
     var slide_post = function () {
         var PRE_LOAD = 2;
-        jQuery('div.post:visible').each(function () {
+        jQuery('div.post[id^=post-]:visible').each(function () {
             var id = jQuery(this).attr('id');
             var pc = jQuery('#' + jq(id) + ' .content-wrap');
-            if (/^post\-/.test(id)) {
-                var toggle = jQuery('<a href="javascript:void(0);" class="toggle"></a>');
-                toggle.toggle(function () {
-                    if (pc.find(".content").text() == '') {
-                        loadPost(id);
-                    } else if (pc.find(".gcse").length > 0) {
-                        pc.hide();
-                        loadPost(id);
-                    }
-                    pc.fadeIn(200);
-                    jQuery(this).removeClass('collapse').addClass('expand');
-                },
-                function () {
+            var toggle = jQuery('<a href="javascript:void(0);" class="toggle"></a>');
+            toggle.toggle(function () {
+                if (pc.find(".content").text() == '') {
+                    loadPost(id);
+                } else if (pc.find(".gcse").length > 0) {
                     pc.hide();
-                    jQuery(this).removeClass('expand').addClass('collapse');
-                }).prependTo(jQuery(this).find("h1"));
-            }
+                    loadPost(id);
+                }
+                pc.fadeIn(200);
+                jQuery(this).removeClass('collapse').addClass('expand');
+            },
+            function () {
+                pc.hide();
+                jQuery(this).removeClass('expand').addClass('collapse');
+            }).prependTo(jQuery(this).find("h1"));
         });
         if (PRE_LOAD > 0) {
             jQuery('div.post:visible a.toggle').each(function (index) {

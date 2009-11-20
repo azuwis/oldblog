@@ -11,7 +11,7 @@ layout: null
 </div>
 <#for(var i=0; i<data.r.length; i++) {
 var title = data.r[i].titleNoFormatting.replace("| {{ site.title }}", "");
-var postid = data.r[i].url.match(/http:\/\/[^/]+(.*)\.html$/);
+var postid = data.r[i].url.match(/^http:\/\/[^/]+(.*)\.html$/);
 #>
 <div class="post"
 <#if (postid && postid.length == 2) {
