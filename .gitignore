@@ -1,6 +1,3 @@
 _site
-_trash
 _appengine/404.html
-_appengine/index.yaml
-feeds/
 inc/tagcloud.html
