@@ -11,15 +11,15 @@ layout: null
 </div>
 <#for(var i=0; i<data.r.length; i++) {
 var title = data.r[i].titleNoFormatting.replace("| {{ site.title }}", "");
-var postid = data.r[i].url.match(/http:\/\/[^/]+(.*)/);
-if (postid && postid.length == 2) {
-	postid = "post-" + postid[1].replace(/\.html$/,"").replace(/\//g,"__");
-	if (postid == "post-__") {
-		postid = "homepage";
-	}
-}
+var postid = data.r[i].url.match(/http:\/\/[^/]+(.*)\.html$/);
 #>
-<div class="post" id="<#=postid#>">
+<div class="post"
+<#if (postid && postid.length == 2) {
+	postid = "post-" + postid[1].replace(/\//g,"__");
+#>
+id="<#=postid#>"
+<#}#>
+>
 	<h1><a class="title" href="<#=data.r[i].url#>"><#=title#></a></h1>
 	<div class="content-wrap">
 		<div class="content">
