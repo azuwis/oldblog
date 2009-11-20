@@ -1,3 +1,4 @@
+(function() {
 /* slide post */
 var jq = function (myid) {
     return myid.replace(/:/g, "\\:").replace(/\./g, "\\.").replace(/\//g, "\\/");
@@ -6,7 +7,7 @@ var jq = function (myid) {
 jQuery.fn.pretty = function() {
     var prettify = false;
     this.find("pre code").filter(function(){
-	return /^#!\//.test(jQuery(this).text());
+	return (/^#!\//).test(jQuery(this).text());
     }).parent().each(function() {
         jQuery(this).addClass('prettyprint');
 	prettify = true;
@@ -25,7 +26,7 @@ jQuery.fn.pretty = function() {
             });
         }
     }
-}
+};
 var loadPost = function (id) {
     var loadPostContent = function (id, data) {
         var pc = jQuery('#' + jq(id) + ' .content').html(data);
@@ -279,5 +280,5 @@ jQuery.ajax({
 });
 
 window.gcse = gcse;
-window.slide_post = slide_post;
 window.loadPost = loadPost;
+})();
