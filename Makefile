@@ -1,4 +1,4 @@
-all: jekyll tagcloud upload
+all: tagcloud jekyll upload
 
 test:
 	jekyll --auto --server
