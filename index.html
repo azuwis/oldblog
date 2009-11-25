@@ -29,11 +29,11 @@ title:  Homepage
     <div class="wp-pagenavi">
         <span class="pages">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
         {% if paginator.page > 5 %}
-        <a href="http://www.neoease.com/" class="first" title="&laquo; First">&laquo; First</a><span class="extend">...</span>
+        <a href="/" class="first" title="&laquo; First">&laquo; First</a><span class="extend">...</span>
         {% endif %}
 
         {% if paginator.previous_page %}
-        <a href="/page{{ paginator.previous_page }}/" >&laquo;</a>
+        <a href="/{% if paginator.previous_page != 1 %}page{{ paginator.previous_page }}/{% endif %}" >&laquo;</a>
         {% endif %}
 
         {% capture off_set %}
