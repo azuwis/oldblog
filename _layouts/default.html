@@ -50,11 +50,11 @@
 <div id="navigation">
 	<!-- menus START -->
 	<ul id="menus">
-        <li class="current_page_item"><a class="home" title="Home" href="/">Home</a></li>
+	<li class="{% if page.title == 'Homepage' %}current_{% endif %}page_item"><a class="home" title="Home" href="/">Home</a></li>
         {% for item in site.nav %}
-        <li class="page_item"><a href="{{ item.url }}" title="{{ item.name | xml_escape }}">{{ item.name }}</a></li>
+	<li class="{% if item.name == page.title %}current_{% endif %}page_item"><a href="{{ item.url }}" title="{{ item.name | xml_escape }}">{{ item.name }}</a></li>
         {% endfor %}
-		<li><a class="lastmenu" href="javascript:void(0);"></a></li>
+	<li><a class="lastmenu" href="javascript:void(0);"></a></li>
 	</ul>
 	<!-- menus END -->
 
