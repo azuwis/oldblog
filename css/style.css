@@ -531,7 +531,7 @@ input.textfield,textarea {
 }
 #sidebar .widget {
 	background:url(img/widgetsep.png) bottom no-repeat;
-	padding:10px 15px 16px
+	padding:16px 15px 22px
 }
 #sidebar .widget h2,#sidebar .widget .content p {
 	margin-bottom:10px
