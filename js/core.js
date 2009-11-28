@@ -194,33 +194,6 @@
         }
     });
 
-    /* disqus api */
-    jQuery.ajax({
-        dataType: "jsonp",
-        cache: true,
-        url: "http://azuwis-comments.appspot.com/?limit=8&exclude=spam,killed&callback=?",
-        success: function (data) {
-            var comment = jQuery('<ul>');
-            jQuery.each(data.message, function (i, item) {
-                var author = 'anonymous';
-                var avatar = 'http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=32';
-                if (item.is_anonymous === false) {
-                    author = item.author.username;
-                    if (item.author.has_avatar === true) {
-                        avatar = item.author.avatar.small;
-                    }
-                }
-                comment.append(jQuery('<li class="rc_item">').html(jQuery('<div class="rc_avatar rc_left">').html(jQuery('<img>').attr({
-                    "class": 'avatar avatar-32 photo',
-                    "width": '32',
-                    "height": '32',
-                    "src": avatar
-                }))).append(jQuery('<div class="rc_info">').html(jQuery('<span class="author_name">').html(jQuery('<a>').attr('href', item.thread.url + '#comment-' + item.id).text(author)))).append(jQuery('<div class="rc_excerpt">').text(item.message)));
-            });
-            jQuery('div#recent_comments.widget').append(comment);
-        }
-    });
-
     /* on document ready */
     jQuery(document).ready(function () {
         jQuery('a[rel*="external"]').click(function () {
@@ -232,7 +205,9 @@
                 offset: 0
             });
             return false;
-        }); // display feeds in side bar
+        });
+
+        /* display feeds in side bar */
         jQuery.ajax({
             url: "/inc/feeds.html",
             success: function (html) {
@@ -247,6 +222,7 @@
                 });
             }
         });
+
         /* append inc/translate.html to doc */
         jQuery.ajax({
             url: "/inc/translate.html",
@@ -254,6 +230,34 @@
                 jQuery('body').append(html);
             }
         });
+
+        /* disqus api */
+        jQuery.ajax({
+            dataType: "jsonp",
+            cache: true,
+            url: "http://azuwis-comments.appspot.com/?limit=8&exclude=spam,killed&callback=?",
+            success: function (data) {
+                var comment = jQuery('<ul>');
+                jQuery.each(data.message, function (i, item) {
+                    var author = 'anonymous';
+                    var avatar = 'http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=32';
+                    if (item.is_anonymous === false) {
+                        author = item.author.username;
+                        if (item.author.has_avatar === true) {
+                            avatar = item.author.avatar.small;
+                        }
+                    }
+                    comment.append(jQuery('<li class="rc_item">').html(jQuery('<div class="rc_avatar rc_left">').html(jQuery('<img>').attr({
+                        "class": 'avatar avatar-32 photo',
+                        "width": '32',
+                        "height": '32',
+                        "src": avatar
+                    }))).append(jQuery('<div class="rc_info">').html(jQuery('<span class="author_name">').html(jQuery('<a>').attr('href', item.thread.url + '#comment-' + item.id).text(author)))).append(jQuery('<div class="rc_excerpt">').text(item.message)));
+                });
+                jQuery('div#recent_comments.widget').append(comment);
+            }
+        });
+
         /* google ajax search */
         jQuery("form#cse-search-box").submit(function () {
             gcse(jQuery(this).find("input#searchtxt").val());
@@ -266,6 +270,7 @@
         if (/^\/(index\.|$)/.test(window.location.pathname)) {
             slide_post();
         }
+
         /* fancy zoom */
         jQuery.fn.fancyzoom.defaultsOptions.imgDir = "/lib/fancyzoom/ressources/";
         jQuery.fn.fancyzoom.defaultsOptions.overlay = 0.3;
@@ -275,6 +280,7 @@
             max_length: 1200,
             less: '&laquo; Less'
         };
+
         /* prettify */
         jQuery(document).pretty();
     });
