@@ -194,6 +194,33 @@
         }
     });
 
+    /* disqus api */
+    jQuery.jsonp({
+        dataType: "jsonp",
+        cache: true,
+        url: "http://vi.appspot.com/comment/?limit=8&exclude=spam,killed&callback=?",
+        success: function (data) {
+            var comment = jQuery('<ul>');
+            jQuery.each(data.message, function (i, item) {
+                var author = 'anonymous';
+                var avatar = 'http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=32';
+                if (item.is_anonymous === false) {
+                    author = item.author.username;
+                    if (item.author.has_avatar === true) {
+                        avatar = item.author.avatar.small;
+                    }
+                }
+                comment.append(jQuery('<li class="rc_item">').html(jQuery('<div class="rc_avatar rc_left">').html(jQuery('<img>').attr({
+                    "class": 'avatar avatar-32 photo',
+                    "width": '32',
+                    "height": '32',
+                    "src": avatar
+                }))).append(jQuery('<div class="rc_info">').html(jQuery('<span class="author_name">').html(jQuery('<a>').attr('href', item.thread.url + '#comment-' + item.id).text(author)))).append(jQuery('<div class="rc_excerpt">').text(item.message)));
+            });
+            jQuery('div#recent_comments.widget').append(comment);
+        }
+    });
+
     /* on document ready */
     jQuery(document).ready(function () {
         jQuery('a[rel*="external"]').click(function () {
@@ -228,33 +255,6 @@
             url: "/inc/translate.html",
             success: function (html) {
                 jQuery('body').append(html);
-            }
-        });
-
-        /* disqus api */
-        jQuery.ajax({
-            dataType: "jsonp",
-            cache: true,
-            url: "http://azuwis-comments.appspot.com/?limit=8&exclude=spam,killed&callback=?",
-            success: function (data) {
-                var comment = jQuery('<ul>');
-                jQuery.each(data.message, function (i, item) {
-                    var author = 'anonymous';
-                    var avatar = 'http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=32';
-                    if (item.is_anonymous === false) {
-                        author = item.author.username;
-                        if (item.author.has_avatar === true) {
-                            avatar = item.author.avatar.small;
-                        }
-                    }
-                    comment.append(jQuery('<li class="rc_item">').html(jQuery('<div class="rc_avatar rc_left">').html(jQuery('<img>').attr({
-                        "class": 'avatar avatar-32 photo',
-                        "width": '32',
-                        "height": '32',
-                        "src": avatar
-                    }))).append(jQuery('<div class="rc_info">').html(jQuery('<span class="author_name">').html(jQuery('<a>').attr('href', item.thread.url + '#comment-' + item.id).text(author)))).append(jQuery('<div class="rc_excerpt">').text(item.message)));
-                });
-                jQuery('div#recent_comments.widget').append(comment);
             }
         });
 
