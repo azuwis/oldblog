@@ -212,6 +212,7 @@
     jQuery.jsonp({
         dataType: "jsonp",
         cache: true,
+        timeout: 5000,
         url: "http://vi.appspot.com/comment/?limit=8&exclude=spam,killed&callback=?",
         success: function (data) {
             var comment = jQuery('<ul>');
@@ -232,6 +233,9 @@
                 }))).append(jQuery('<div class="rc_info">').html(jQuery('<span class="author_name">').html(jQuery('<a>').attr('href', item.thread.url + '#comment-' + item.id).text(author)))).append(jQuery('<div class="rc_excerpt">').text(item.message)));
             });
             jQuery('div#recent_comments.widget').append(comment);
+        },
+        error: function () {
+            jQuery('div#recent_comments.widget').append("Oops, timeout when loading.");
         }
     });
 
