@@ -33,6 +33,9 @@
             "href": $clone.attr("src")
         }).html($clone)).find("a.zoom").fancybox({
             "overlayOpacity": 0,
+            "enableEscapeButton": true,
+            "showCloseButton": false,
+            "centerOnScroll": false,
             "zoomSpeedIn": 250
         });
     };
@@ -44,7 +47,7 @@
     var loadPost = function (id) {
         var loadPostContent = function (id, data) {
             var pc = jQuery('#' + jq(id) + ' .content').html(data);
-            pc.find("img").fancyzoom();
+            pc.find("p > img:visible").fancyzoom();
             pc.pretty();
             pc.truncate();
         };
@@ -291,7 +294,7 @@
         }
 
         /* fancybox */
-        jQuery(".post .content img").fancyzoom();
+        jQuery(".post .content p > img:visible").fancyzoom();
 
         /* truncater */
         jQuery.fn.truncate.defaults = {
