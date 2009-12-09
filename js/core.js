@@ -24,6 +24,19 @@
         }
     };
 
+    /* fancybox */
+    jQuery.fn.fancyzoom = function () {
+        var $clone = jQuery(this).clone();
+        jQuery(this).parent().html(jQuery("<a>").attr({
+            "class": "zoom",
+            "title": $clone.attr("alt"),
+            "href": $clone.attr("src")
+        }).html($clone)).find("a.zoom").fancybox({
+            "overlayOpacity": 0,
+            "zoomSpeedIn": 250
+        });
+    };
+
     /* slide post */
     var jq = function (myid) {
         return myid.replace(/:/g, "\\:").replace(/\./g, "\\.").replace(/\//g, "\\/");
@@ -70,6 +83,7 @@
                 pc.fadeIn(200);
                 jQuery(this).removeClass('collapse').addClass('expand');
             },
+
             function () {
                 pc.hide();
                 jQuery(this).removeClass('expand').addClass('collapse');
@@ -244,6 +258,7 @@
                         top: jQuery('#feedrss').cumulativeOffset(this)[1]
                     }).fadeIn(200);
                 },
+
                 function () {
                     jQuery(this).find('ul').fadeOut(400);
                 });
@@ -271,10 +286,10 @@
             slide_post();
         }
 
-        /* fancy zoom */
-        jQuery.fn.fancyzoom.defaultsOptions.imgDir = "/lib/fancyzoom/ressources/";
-        jQuery.fn.fancyzoom.defaultsOptions.overlay = 0.3;
-        jQuery(".post .content img").fancyzoom(); // truncater
+        /* fancybox */
+        jQuery(".post .content img").fancyzoom();
+
+        /* truncater */
         jQuery.fn.truncate.defaults = {
             more: 'More &raquo;',
             max_length: 1200,
