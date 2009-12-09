@@ -2,7 +2,7 @@
 layout: post
 tags: [autohotkey, war3, DotA]
 ---
-![autohotkey](http://www.autohotkey.com/docs/images/AutoHotkey_logo.gif){:width=120 .right}
+![autohotkey](http://www.autohotkey.com/docs/images/AutoHotkey_logo.gif)
 If you like me, press `alt+tab` a lot when playing war3, maybe here is what you
 want.
 

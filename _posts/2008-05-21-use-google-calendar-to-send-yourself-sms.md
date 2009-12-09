@@ -3,7 +3,7 @@ layout: post
 title: 拿 google calendar 来做接口给自己发短信
 tags: [google, calendar, SMS]
 ---
-![google calendar](http://calendar.google.com/googlecalendar/images/calendar_logo_sm_en.gif){:.right}
+![google calendar](http://calendar.google.com/googlecalendar/images/calendar_logo_sm_en.gif)
 google calendar 的短信提醒服务支持中国移动(联通不知道是不是支持)，可以通过 google 提供的 GData 接口给 google calendar 添加短信提醒，从而达到短信接口的效果。
 
 首先是让你的 google calendar 帐号跟你的手机绑定。
