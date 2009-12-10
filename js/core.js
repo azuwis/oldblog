@@ -26,7 +26,19 @@
 
     /* fancybox */
     jQuery.fn.fancyzoom = function () {
-        var $clone = jQuery(this).clone();
+        var $clone = jQuery(this).addClass("right");
+        $clone.each(function(){
+            var maxarea = 19600;
+            var maxsidelength = 200;
+            var width = jQuery(this).width();
+            var height = jQuery(this).height();
+            var area = width * height;
+            var thiswidth = area > maxarea ? width * maxarea / area : width;
+            if (thiswidth > maxsidelength) thiswidth = maxsidelength;
+            if (thiswidth < width) {
+                jQuery(this).attr("width", thiswidth);
+            }
+        });
         jQuery(this).parent().html(jQuery("<a>").attr({
             "class": "zoom",
             "title": $clone.attr("alt"),
@@ -242,6 +254,9 @@
         }
     });
 
+    /* fancybox */
+    jQuery(".post .content p > img:visible").fancyzoom();
+
     /* on document ready */
     jQuery(document).ready(function () {
         jQuery('a[rel*="external"]').click(function () {
@@ -292,9 +307,6 @@
         if (/^\/(index\.|$)/.test(window.location.pathname)) {
             slide_post();
         }
-
-        /* fancybox */
-        jQuery(".post .content p > img:visible").fancyzoom();
 
         /* truncater */
         jQuery.fn.truncate.defaults = {

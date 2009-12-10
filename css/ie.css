@@ -1,2 +1,1 @@
 pre{word-wrap:break-word}a span,#submitbox #submit,#searchbox .button,#subscribe li a{cursor:hand}
-.post .content img {width: expression(this.width > 150 ? 150: true)}

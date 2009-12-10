@@ -1070,8 +1070,3 @@ a.imageswitcher_button:hover {
 #main .easy-archives .month li {
 	margin-left: 0;
 }
-.post .content img {
-	max-width: 165px;
-	float:right;
-	margin-left:10px
-}
